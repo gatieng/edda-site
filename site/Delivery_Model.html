@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EDDA Delivery Model: how we engage with our clients. Three flexible engagement models tailored to your needs and constraints." />
+  <title>EDDA | Delivery Model</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/subpage.css" />
+  <link rel="stylesheet" href="css/what-we-do.css" />
+</head>
+<body>
+  <!-- Skip links -->
+  <ul class="skip-links" aria-label="Skip links">
+    <li><a href="#main">Skip to main content</a></li>
+    <li><a href="#primary-nav">Skip to navigation</a></li>
+    <li><a href="#footer">Skip to footer</a></li>
+  </ul>
+
+  <!-- Header (shared) -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-pill" style="height: 70px">
+        <a href="index.html" class="header-brand" aria-label="EDDA — Home">
+          <img src="img/logo-edda.svg" alt="" style="margin: 0px 0px 0px -13px" />
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-haspopup="dialog">
+          <span class="nav-toggle__icon" aria-hidden="true">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </span>
+          <span class="nav-toggle__text">Menu</span>
+        </button>
+        <div id="primary-nav" class="header-nav">
+          <div class="header-nav__top">
+            <span class="header-nav__title" id="nav-title">Menu</span>
+            <button class="nav-close" type="button" aria-label="Close menu">
+              <span class="nav-close__label">Close</span>
+              <span class="nav-close__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" focusable="false"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </button>
+          </div>
+          <nav role="navigation" aria-label="Primary">
+            <ul role="list">
+              <li><a href="index.html">Home page</a></li>
+              <li class="has-submenu">
+                <button type="button" class="header-nav__submenu-toggle" aria-expanded="false" aria-controls="submenu-services" aria-haspopup="true" data-section-current="true">
+                  What we do
+                  <svg class="header-nav__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div id="submenu-services" class="header-nav__submenu header-nav__mega" role="group" aria-label="What we do">
+                  <div class="header-mega__col">
+                    <div class="header-mega__col-head">
+                      <p class="header-mega__label">Services</p>
+                    </div>
+                    <ul class="header-mega__list" role="list">
+                    <li><a href="Software_Development.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Software Development</span></a></li>
+                    <li><a href="Data_Intelligence.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20V13M10 20V8M16 20V11M22 20V4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M3 5l5 4 6-4 7 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/></svg></span><span>Data Intelligence</span></a></li>
+                    <li><a href="AI_Engineering.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2l2.2 5.8L21 10l-5.8 2.2L13 18l-2.2-5.8L5 10l5.8-2.2L13 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><span>AI Engineering</span></a></li>
+                    <li><a href="Cloud_Infrastructure.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7.5 18h10a4.5 4.5 0 0 0 .8-8.94A6.5 6.5 0 0 0 5.5 11.5 4 4 0 0 0 7.5 18z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span>Cloud &amp; Infrastructure</span></a></li>
+                    <li><a href="Cybersecurity_IMAS.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v5.5c0 4.5-3.4 8.5-8 9.5-4.6-1-8-5-8-9.5V6l8-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><rect x="9" y="10.5" width="6" height="5" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>Cybersecurity · IMAS</span></a></li>
+                    <li><a href="Digital_Workplace_ECM.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>Digital Workplace &amp; ECM</span></a></li>
+                    <li><a href="Experience_Design.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20l5-2 9-9-3-3-9 9-2 5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 6l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="19" cy="19" r="2" stroke="currentColor" stroke-width="1.6"/></svg></span><span>Experience Design &amp; Accessibility</span></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li><a href="Who_We_Are.html">Who we are</a></li>
+                            <li><a href="Delivery_Model.html">Quality &amp; delivery</a></li>
+              <li><a href="News.html">News</a></li>
+              <li><a href="Jobs.html">Jobs<span class="nav-badge" aria-label="10 open positions">10</span></a></li>
+            </ul>
+          </nav>
+        </div>
+        <a class="header-cta" href="Contact.html" style="padding: 0px 22px; margin: 0px 3px 0px 0px">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <script src="js/header-nav.js" defer></script>
+  <script src="js/header-scroll.js" defer></script>
+
+  <main role="main" id="main" tabindex="-1">
+    <!-- ====================================================================
+         Sub-page hero with breadcrumb
+         ==================================================================== -->
+    <section class="sub-hero">
+      <div class="container">
+        <nav role="navigation" class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="breadcrumb__sep" aria-hidden="true">›</li>
+            <li><a href="What_We_Do.html">What we do</a></li>
+            <li class="breadcrumb__sep" aria-hidden="true">›</li>
+            <li><span aria-current="page">Delivery Model</span></li>
+          </ol>
+        </nav>
+        <div class="sub-hero__inner">
+          <h1>Delivery Model</h1>
+          <p class="sub-hero__tagline">Three engagement models, one consistent quality of delivery. We adapt to your context, not the other way around.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Intro
+         ==================================================================== -->
+    <section class="promise-section" style="padding: 88px 0px 55px">
+      <div class="container">
+        <div class="promise-grid">
+          <div class="promise-head">
+            <h2>Flexible engagement, consistent delivery.</h2>
+          </div>
+          <ul class="promise-list" role="list">
+            <li>We propose three different engagement models so you can pick the one that fits your context, your team and your governance.</li>
+            <li>Whatever the model, we keep the same standards: senior people, transparent reporting and a clear definition of done.</li>
+            <li>Our teams operate from Luxembourg and Brussels, close to our clients and aligned with their operating constraints.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Delivery models
+         ==================================================================== -->
+    <section class="delivery-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Engagement models, chosen to fit the mission.</h2>
+          <p class="lead">From a short advisory sprint to a multi-year managed service centre. We pick the engagement shape that fits the work, not the other way round.</p>
+        </div>
+
+        <div class="delivery-grid">
+          <article class="delivery-card">
+            <span class="delivery-card__badge">Advise</span>
+            <h3>Consulting</h3>
+            <p>Senior consultants embedded in your team to frame the problem, architect the solution and steer delivery.</p>
+            <ul class="delivery-card__list" role="list">
+              <li>Architecture &amp; technology strategy</li>
+              <li>Audits &amp; roadmaps</li>
+              <li>Programme &amp; project governance</li>
+            </ul>
+          </article>
+
+          <article class="delivery-card">
+            <span class="delivery-card__badge">Deliver</span>
+            <h3>Project delivery</h3>
+            <p>Fixed-scope, fixed-outcome engagements. We own the plan, the quality gates and the go-live.</p>
+            <ul class="delivery-card__list" role="list">
+              <li>Custom build &amp; modernisation</li>
+              <li>Data &amp; AI implementations</li>
+              <li>Accessibility remediation programmes</li>
+            </ul>
+          </article>
+
+          <article class="delivery-card delivery-card--accent">
+            <span class="delivery-card__badge">Industrialise</span>
+            <h3>EDDA Factory</h3>
+            <p>Dedicated service centres — a managed, sustained delivery capability run to your standards.</p>
+            <ul class="delivery-card__list" role="list">
+              <li>Multi-year IT service centres</li>
+              <li>Standardised methodology &amp; tooling</li>
+              <li>Coaching, cookbooks, continuous improvement</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         What stays constant across the three models
+         ==================================================================== -->
+    <section class="capability-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Same standards. Whatever the model.</h2>
+        </div>
+        <div class="approach-grid" style="margin:34px 0 42px">
+          <article class="approach-item approach-item--cert">
+            <img class="cert-iso-mark" src="img/iso-9001.png" alt="" aria-hidden="true" />
+            <span class="cert-tag">Certified</span>
+            <h3>ISO 9001 · Quality management</h3>
+            <p>Documented processes, standardisation and continuous improvement — applied to every engagement.</p>
+          </article>
+          <article class="approach-item approach-item--cert">
+            <img class="cert-iso-mark" src="img/iso-14001.png" alt="" aria-hidden="true" />
+            <span class="cert-tag">Certified</span>
+            <h3>ISO 14001 · Environmental management</h3>
+            <p>Control of environmental impacts and a responsible commitment embedded in our operations.</p>
+          </article>
+        </div>
+        <div class="capability-grid">
+          <article class="capability-card">
+            <h3>Senior people</h3>
+            <ul role="list">
+              <li>Experienced consultants</li>
+              <li>Local presence, local accountability</li>
+              <li>No layering of juniors behind partners</li>
+            </ul>
+          </article>
+          <article class="capability-card">
+            <h3>Transparent reporting</h3>
+            <ul role="list">
+              <li>Weekly steering &amp; status</li>
+              <li>Open backlog &amp; burndown</li>
+              <li>No surprises at milestone</li>
+            </ul>
+          </article>
+          <article class="capability-card">
+            <h3>Proven methodology</h3>
+            <ul role="list">
+              <li>Agile or V-Model on demand</li>
+              <li>ALM &amp; quality standards</li>
+              <li>PRINCE2 &amp; ISTQB certified staff</li>
+            </ul>
+          </article>
+          <article class="capability-card">
+            <h3>Security by design</h3>
+            <ul role="list">
+              <li>Security Development Lifecycle</li>
+              <li>Compliance-aware delivery</li>
+              <li>NIS2 / DORA / GDPR alignment</li>
+            </ul>
+          </article>
+          <article class="capability-card">
+            <h3>Clear definition of done</h3>
+            <ul role="list">
+              <li>Acceptance criteria up front</li>
+              <li>Production-ready releases</li>
+              <li>Documented &amp; handed over</li>
+            </ul>
+          </article>
+          <article class="capability-card">
+            <h3>Continuity</h3>
+            <ul role="list">
+              <li>Long-term partnerships</li>
+              <li>Knowledge transfer built in</li>
+              <li>Smooth ramp-up &amp; ramp-down</li>
+            </ul>
+          </article>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Case studies
+         ==================================================================== -->
+    <section class="case-studies-section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Case studies.</h2>
+          <p class="lead">A few engagements where our delivery model and quality standards made the difference.</p>
+        </div>
+        <div class="case-studies-grid">
+          <article class="about-card case-study-card">
+            <a class="about-card__media" href="Use_Cases.html" aria-hidden="true" tabindex="-1"><img src="https://picsum.photos/seed/edda-cs1/800/520" alt="" loading="lazy" /></a>
+            <header class="about-card__head">
+              <p class="about-card__kicker">Public sector</p>
+            </header>
+            <h3 class="about-card__title"><a href="Use_Cases.html">Legacy platform modernised with zero downtime.</a></h3>
+            <p class="about-card__lede">A fixed-price rebuild of a mission-critical system for a European institution, delivered on schedule and to acceptance.</p>
+            <p class="case-study-card__stat"><strong>0</strong> days of service interruption</p>
+          </article>
+          <article class="about-card case-study-card">
+            <a class="about-card__media" href="Use_Cases.html" aria-hidden="true" tabindex="-1"><img src="https://picsum.photos/seed/edda-cs2/800/520" alt="" loading="lazy" /></a>
+            <header class="about-card__head">
+              <p class="about-card__kicker">Finance</p>
+            </header>
+            <h3 class="about-card__title"><a href="Use_Cases.html">A managed delivery centre for a leading bank.</a></h3>
+            <p class="about-card__lede">A dedicated service centre absorbing part of the client's IT backlog, with weekly steering and transparent reporting.</p>
+            <p class="case-study-card__stat"><strong>4 yrs</strong> continuous partnership</p>
+          </article>
+          <article class="about-card case-study-card">
+            <a class="about-card__media" href="Use_Cases.html" aria-hidden="true" tabindex="-1"><img src="https://picsum.photos/seed/edda-cs3/800/520" alt="" loading="lazy" /></a>
+            <header class="about-card__head">
+              <p class="about-card__kicker">Industry</p>
+            </header>
+            <h3 class="about-card__title"><a href="Use_Cases.html">Secure data pipelines, built to standard.</a></h3>
+            <p class="about-card__lede">A compliance-aware data platform delivered under our V-Model, aligned with NIS2 and GDPR from day one.</p>
+            <p class="case-study-card__stat"><strong>ISO</strong> 9001 &amp; 14001 aligned</p>
+          </article>
+        </div>
+        <div class="case-studies-cta">
+          <a class="btn btn-primary" href="Use_Cases.html">
+            <span>Browse all case studies</span>
+            <svg class="btn-arrow" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Related services
+         ==================================================================== -->
+    <section id="contact" class="final-cta">
+      <div class="container">
+        <div class="final-cta-box">
+          <div>
+            <h2>Ready to transform your digital journey?</h2>
+            <p>
+              Get in touch with our teams in Luxembourg or Brussels to discuss your needs. We work with you from strategy through to delivery.
+            </p>
+          </div>
+          <div>
+            <a class="btn" href="mailto:contact@edda.lu">Contact us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (shared) -->
+  <footer role="contentinfo" id="footer" class="site-footer" tabindex="-1" style="border-color: rgb(35, 49, 67)">
+    <div class="container footer-group footer-group--top">
+      <p class="footer-title footer-group__head">Groupe <span class="footer-group__edda">EDDA</span></p>
+      <ul class="footer-group__list" role="list">
+        <li><a href="Contact.html">EDDA Luxembourg <span>Software, consulting &amp; UX</span></a></li>
+        <li><a href="Contact.html">EDDA Belgium <span>Our foothold in Brussels</span></a></li>
+        <li><a href="https://www.imas.eu/" target="_blank" rel="noopener">IMAS <span>Cyber security made simple</span></a></li>
+        <li><a href="https://www.phrenos.eu/" target="_blank" rel="noopener">Phrenos <span>European-scale events</span></a></li>
+      </ul>
+    </div>
+    <div class="container footer-grid">
+      <div>
+        <img class="footer-logo" src="img/logo-edda-footer.png" alt="EDDA" />
+        <p class="footer-copy">Your trusted partner for digital transformation.</p>
+        <ul class="footer-certs" role="list">
+          <li><img src="img/iso-9001.png" alt="ISO 9001 certified" /><span>ISO 9001</span></li>
+          <li><img src="img/iso-14001.png" alt="ISO 14001 certified" /><span>ISO 14001</span></li>
+        </ul>
+      </div>
+      <nav role="navigation" aria-label="Footer">
+        <p class="footer-title" id="footer-nav-title">Navigation</p>
+        <ul class="footer-links" role="list" aria-labelledby="footer-nav-title">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="What_We_Do.html">What we do</a></li>
+          <li><a href="Use_Cases.html">Use cases</a></li>
+          <li><a href="Who_We_Are.html">Who we are</a></li>
+          <li><a href="Jobs.html">Jobs</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-title" id="footer-offices-title">Offices</p>
+        <ul class="footer-links" role="list" aria-labelledby="footer-offices-title">
+          <li>
+            <address>
+              <strong>Windhof (Luxembourg)</strong><br />
+              3 rue de l'industrie<br />
+              L‑8399 Windhof<br />
+              <a href="tel:+35228860700">+352 28 86 07</a>
+            </address>
+          </li>
+          <li>
+            <address>
+              <strong>Brussels</strong><br />
+              Chaussée de la Hulpe, 185<br />
+              <a href="tel:+35228860700">+352 28 86 07</a>
+            </address>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title" id="footer-contact-title">Contact</p>
+        <div class="footer-contact" aria-labelledby="footer-contact-title">
+          <a href="mailto:info@edda.lu"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M4 7.5l8 5.5 8-5.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>info@edda.lu</span></a>
+          <a href="https://wa.me/35228860700" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.9 8.4c.3-.6.9-.5 1.2 0l.6 1.1c.2.4 0 .7-.3 1-.3.3-.3.5-.1.8.5.9 1.1 1.4 2 1.9.3.2.6.1.8-.2.3-.3.6-.5 1-.3l1.1.6c.5.3.6.8 0 1.2-1 .7-2.1.7-3.3.1a8.4 8.4 0 0 1-3.7-3.7c-.6-1.2-.6-2.2.1-3.2z" fill="currentColor"/></svg><span>WhatsApp</span></a>
+        </div>
+        <ul class="footer-social" role="list">
+          <li><a href="https://www.linkedin.com/company/eddalux" target="_blank" rel="noopener" aria-label="EDDA on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.55h.05c.53-.95 1.83-1.85 3.65-1.85 2.9 0 3.9 1.85 3.9 4.75V21h-4v-5.9c0-1.4-.5-2.35-1.75-2.35-1.05 0-1.65.7-1.9 1.4-.1.25-.13.6-.13.95V21h-3.6z"/></svg></a></li>
+          <li><a href="https://www.facebook.com/eddaluxembourg" target="_blank" rel="noopener" aria-label="EDDA on Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.8c0-.85.25-1.4 1.5-1.4h1.6V4.7c-.3-.05-1.3-.15-2.5-.15-2.5 0-4.1 1.5-4.1 4.3v1.65H7.5v3h2.5V21z"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-legal">
+      <nav role="navigation" aria-label="Legal">
+        <ul role="list" class="footer-links footer-links--inline">
+          <li><a href="#">Cookie Settings</a></li>
+          <li><a href="#">Privacy Statement</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Legal</a></li>
+          <li><a href="Accessibility_Statement.html">Accessibility Statement</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

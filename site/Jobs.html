@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EDDA — Open positions in Luxembourg and Brussels. Software, data, AI, cloud, cybersecurity, M365, web. Browse our current offers." />
+  <title>EDDA | Jobs &amp; Open positions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/subpage.css" />
+  <link rel="stylesheet" href="css/what-we-do.css" />
+  <link rel="stylesheet" href="css/jobs-binder.css" />
+</head>
+<body>
+  <!-- Skip links -->
+  <ul class="skip-links" aria-label="Skip links">
+    <li><a href="#main">Skip to main content</a></li>
+    <li><a href="#primary-nav">Skip to navigation</a></li>
+    <li><a href="#jobs-list">Skip to open positions</a></li>
+    <li><a href="#footer">Skip to footer</a></li>
+  </ul>
+
+  <!-- Header (shared) -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-pill" style="height: 70px">
+        <a href="index.html" class="header-brand" aria-label="EDDA — Home">
+          <img src="img/logo-edda.svg" alt="" style="margin: 0px 0px 0px -13px" />
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-haspopup="dialog">
+          <span class="nav-toggle__icon" aria-hidden="true">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </span>
+          <span class="nav-toggle__text">Menu</span>
+        </button>
+        <div id="primary-nav" class="header-nav">
+          <div class="header-nav__top">
+            <span class="header-nav__title" id="nav-title">Menu</span>
+            <button class="nav-close" type="button" aria-label="Close menu">
+              <span class="nav-close__label">Close</span>
+              <span class="nav-close__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" focusable="false"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </button>
+          </div>
+          <nav role="navigation" aria-label="Primary">
+            <ul role="list">
+              <li><a href="index.html">Home page</a></li>
+              <li class="has-submenu">
+                <button type="button" class="header-nav__submenu-toggle" aria-expanded="false" aria-controls="submenu-services" aria-haspopup="true">
+                  What we do
+                  <svg class="header-nav__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div id="submenu-services" class="header-nav__submenu header-nav__mega" role="group" aria-label="What we do">
+                  <div class="header-mega__col">
+                    <div class="header-mega__col-head">
+                      <p class="header-mega__label">Services</p>
+                    </div>
+                    <ul class="header-mega__list" role="list">
+                    <li><a href="Software_Development.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Software Development</span></a></li>
+                    <li><a href="Data_Intelligence.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20V13M10 20V8M16 20V11M22 20V4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M3 5l5 4 6-4 7 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/></svg></span><span>Data Intelligence</span></a></li>
+                    <li><a href="AI_Engineering.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2l2.2 5.8L21 10l-5.8 2.2L13 18l-2.2-5.8L5 10l5.8-2.2L13 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><span>AI Engineering</span></a></li>
+                    <li><a href="Cloud_Infrastructure.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7.5 18h10a4.5 4.5 0 0 0 .8-8.94A6.5 6.5 0 0 0 5.5 11.5 4 4 0 0 0 7.5 18z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span>Cloud &amp; Infrastructure</span></a></li>
+                    <li><a href="Cybersecurity_IMAS.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v5.5c0 4.5-3.4 8.5-8 9.5-4.6-1-8-5-8-9.5V6l8-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><rect x="9" y="10.5" width="6" height="5" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>Cybersecurity · IMAS</span></a></li>
+                    <li><a href="Digital_Workplace_ECM.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>Digital Workplace &amp; ECM</span></a></li>
+                    <li><a href="Experience_Design.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20l5-2 9-9-3-3-9 9-2 5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 6l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="19" cy="19" r="2" stroke="currentColor" stroke-width="1.6"/></svg></span><span>Experience Design &amp; Accessibility</span></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li><a href="Who_We_Are.html">Who we are</a></li>
+              <li><a href="Delivery_Model.html">Quality &amp; delivery</a></li>
+              <li><a href="News.html">News</a></li>
+              <li><a href="Jobs.html" aria-current="page">Jobs<span class="nav-badge" aria-label="10 open positions">10</span></a></li>
+            </ul>
+          </nav>
+        </div>
+        <a class="header-cta" href="Contact.html" style="padding: 0px 22px; margin: 0px 3px 0px 0px">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <script src="js/header-nav.js" defer></script>
+  <script src="js/header-scroll.js" defer></script>
+
+  <main role="main" id="main" tabindex="-1">
+    <!-- ====================================================================
+         Page hero
+         ==================================================================== -->
+    <section class="page-hero page-hero--media">
+      <img class="sub-hero__bg" src="img/jobs-band.png" alt="Halftone portrait reading a newspaper in EDDA violet">
+      <div class="container">
+        <nav role="navigation" class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="breadcrumb__sep" aria-hidden="true">›</li>
+            <li><span aria-current="page">Jobs</span></li>
+          </ol>
+        </nav>
+        <h1>Build the next chapter <span class="word-emph">with us</span>.</h1>
+        <p>Work with leading institutions in Luxembourg and Brussels. Long-term missions, a collaborative team culture, exposure to complex, high-impact programmes — and people who actually enjoy showing up on Mondays.</p>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Open positions — clean card grid
+         Each card is a self-contained article: category, role title (link to
+         the application mail), meta info (location, contract, tag), short
+         description, "Apply" CTA. Whole card is clickable through the title link.
+         ==================================================================== -->
+    <section class="jobs-section" id="jobs-list">
+      <div class="container">
+        <div class="section-head" style="max-width: 760px;">
+          <h2>Ten roles, currently open.</h2>
+          <p class="lead">Permanent positions across Luxembourg, Brussels and assignments with the European Institutions. Click a role title to start the conversation.</p>
+        </div>
+
+        <ul class="jobs-grid" role="list">
+          <li><article class="job-card" data-cat="institution">
+            <p class="job-card__cat">European Institution</p>
+            <h3 class="job-card__title">Technical Support and Quality Specialist</h3>
+            <ul class="job-card__meta" role="list">
+              <li><span aria-hidden="true">📍</span> Luxembourg / Brussels</li>
+              <li><span aria-hidden="true">📄</span> Permanent · Full-time</li>
+              <li><span aria-hidden="true">🏷</span> Quality & Delivery</li>
+            </ul>
+            <p class="job-card__desc">Quality assessment of code and deliverables, release management, continuous integration, drafting of technical standards and specifications.</p>
+            <div class="job-card__actions">
+              <a class="job-card__btn job-card__btn--linkedin" href="https://www.linkedin.com/company/edda-lu/jobs/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Apply on LinkedIn</a>
+              <a class="job-card__btn job-card__btn--mail" href="mailto:jobs@edda.lu?subject=Application%20—%20Technical%20Support%20and%20Quality%20Specialist">Send an email</a>
+            </div>
+          </article></li>
+          <li><article class="job-card" data-cat="institution">
+            <p class="job-card__cat">European Institution</p>
+            <h3 class="job-card__title">Web Designer and Developer</h3>
+            <ul class="job-card__meta" role="list">
+              <li><span aria-hidden="true">📍</span> Luxembourg / Brussels</li>
+              <li><span aria-hidden="true">📄</span> Permanent · Full-time</li>
+              <li><span aria-hidden="true">🏷</span> Design & Frontend</li>
+            </ul>
+            <p class="job-card__desc">Design proposals implemented through HTML, CSS and JavaScript. Page layout, navigation and accessibility for institutional sites.</p>
+            <div class="job-card__actions">
+              <a class="job-card__btn job-card__btn--linkedin" href="https://www.linkedin.com/company/edda-lu/jobs/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Apply on LinkedIn</a>
+              <a class="job-card__btn job-card__btn--mail" href="mailto:jobs@edda.lu?subject=Application%20—%20Web%20Designer%20and%20Developer">Send an email</a>
+            </div>
+          </article></li>
+          <li><article class="job-card" data-cat="institution">
+            <p class="job-card__cat">European Institution</p>
+            <h3 class="job-card__title">Technical Architect</h3>
+            <ul class="job-card__meta" role="list">
+              <li><span aria-hidden="true">📍</span> Luxembourg / Brussels</li>
+              <li><span aria-hidden="true">📄</span> Permanent · Full-time</li>
+              <li><span aria-hidden="true">🏷</span> Architecture</li>
+            </ul>
+            <p class="job-card__desc">Define software architecture and component interactions, review modelling activities, ensure technical coherence across the portfolio.</p>
+            <div class="job-card__actions">
+              <a class="job-card__btn job-card__btn--linkedin" href="https://www.linkedin.com/company/edda-lu/jobs/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Apply on LinkedIn</a>
+              <a class="job-card__btn job-card__btn--mail" href="mailto:jobs@edda.lu?subject=Application%20—%20Technical%20Architect">Send an email</a>
+            </div>
+          </article></li>
+          <li><article class="job-card" data-cat="institution">
+            <p class="job-card__cat">European Institution</p>
+            <h3 class="job-card__title">Solution Specialist</h3>
+            <ul class="job-card__meta" role="list">
+              <li><span aria-hidden="true">📍</span> Luxembourg / Brussels</li>
+              <li><span aria-hidden="true">📄</span> Permanent · Full-time</li>
+              <li><span aria-hidden="true">🏷</span> Integration</li>
+            </ul>
+            <p class="job-card__desc">Integrate off-the-shelf solutions with IT systems, define the best integration approach and prototype the result with stakeholders.</p>
+            <div class="job-card__actions">
+              <a class="job-card__btn job-card__btn--linkedin" href="https://www.linkedin.com/company/edda-lu/jobs/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Apply on LinkedIn</a>
+              <a class="job-card__btn job-card__btn--mail" href="mailto:jobs@edda.lu?subject=Application%20—%20Solution%20Specialist">Send an email</a>
+            </div>
+          </article></li>
+          <li><article class="job-card" data-cat="institution">
+            <p class="job-card__cat">European Institution</p>
+            <h3 class="job-card__title">Developer Specialist</h3>
+            <ul class="job-card__meta" role="list">
+              <li><span aria-hidden="true">📍</span> Luxembourg / Brussels</li>
+              <li><span aria-hidden="true">📄</span> Permanent · Full-time</li>
+              <li><span aria-hidden="true">🏷</span> Development</li>
+            </ul>
+            <p class="job-card__desc">Technical development, maintenance and support of Information Systems under the supervision of a Project Manager.</p>
+            <div class="job-card__actions">
+              <a class="job-card__btn job-card__btn--linkedin" href="https://www.linkedin.com/company/edda-lu/jobs/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Apply on LinkedIn</a>
+              <a class="job-card__btn job-card__btn--mail" href="mailto:jobs@edda.lu?subject=Application%20—%20Developer%20Specialist">Send an email</a>
+            </div>
+          </article></li>
+          <li><article class="job-card" data-cat="data">
+            <p class="job-card__cat">Data Intelligence</p>
+            <h3 class="job-card__title">BI consultant</h3>
+            <ul class="job-card__meta" role="list">
+              <li><span aria-hidden="true">📍</span> Luxembourg</li>
+              <li><span aria-hidden="true">📄</span> Permanent · Full-time</li>
+              <li><span aria-hidden="true">🏷</span> BI & Analytics</li>
+            </ul>
+            <p class="job-card__desc">Discovery with business stakeholders, modelling, building and maintaining production dashboards, coaching internal teams.</p>
+            <div class="job-card__actions">
+              <a class="job-card__btn job-card__btn--linkedin" href="https://www.linkedin.com/company/edda-lu/jobs/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Apply on LinkedIn</a>
+              <a class="job-card__btn job-card__btn--mail" href="mailto:jobs@edda.lu?subject=Application%20—%20BI%20consultant">Send an email</a>
+            </div>
+          </article></li>
+          <li><article class="job-card" data-cat="workplace">
+            <p class="job-card__cat">Digital Workplace</p>
+            <h3 class="job-card__title">Microsoft 365 Developer</h3>
+            <ul class="job-card__meta" role="list">
+              <li><span aria-hidden="true">📍</span> Luxembourg</li>
+              <li><span aria-hidden="true">📄</span> Permanent · Full-time</li>
+              <li><span aria-hidden="true">🏷</span> M365 & SharePoint</li>
+            </ul>
+            <p class="job-card__desc">Design and develop tailored solutions across SharePoint Online, Power Platform and the wider Microsoft 365 ecosystem.</p>
+            <div class="job-card__actions">
+              <a class="job-card__btn job-card__btn--linkedin" href="https://www.linkedin.com/company/edda-lu/jobs/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Apply on LinkedIn</a>
+              <a class="job-card__btn job-card__btn--mail" href="mailto:jobs@edda.lu?subject=Application%20—%20Microsoft%20365%20Developer">Send an email</a>
+            </div>
+          </article></li>
+          <li><article class="job-card" data-cat="dev">
+            <p class="job-card__cat">Software Engineering</p>
+            <h3 class="job-card__title">Fullstack React and .Net Core Developer</h3>
+            <ul class="job-card__meta" role="list">
+              <li><span aria-hidden="true">📍</span> Luxembourg</li>
+              <li><span aria-hidden="true">📄</span> Permanent · Full-time</li>
+              <li><span aria-hidden="true">🏷</span> React · .Net Core</li>
+            </ul>
+            <p class="job-card__desc">Build React front-ends and .Net Core services in cross-functional product teams for finance and public-sector clients.</p>
+            <div class="job-card__actions">
+              <a class="job-card__btn job-card__btn--linkedin" href="https://www.linkedin.com/company/edda-lu/jobs/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Apply on LinkedIn</a>
+              <a class="job-card__btn job-card__btn--mail" href="mailto:jobs@edda.lu?subject=Application%20—%20Fullstack%20React%20and%20.Net%20Core%20Developer">Send an email</a>
+            </div>
+          </article></li>
+          <li><article class="job-card" data-cat="dev">
+            <p class="job-card__cat">Software Engineering</p>
+            <h3 class="job-card__title">Fullstack Angular and Java Developer</h3>
+            <ul class="job-card__meta" role="list">
+              <li><span aria-hidden="true">📍</span> Luxembourg</li>
+              <li><span aria-hidden="true">📄</span> Permanent · Full-time</li>
+              <li><span aria-hidden="true">🏷</span> Angular · Java</li>
+            </ul>
+            <p class="job-card__desc">Angular front-ends and Spring-based Java back-ends, CI/CD pipelines, product-team mindset.</p>
+            <div class="job-card__actions">
+              <a class="job-card__btn job-card__btn--linkedin" href="https://www.linkedin.com/company/edda-lu/jobs/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Apply on LinkedIn</a>
+              <a class="job-card__btn job-card__btn--mail" href="mailto:jobs@edda.lu?subject=Application%20—%20Fullstack%20Angular%20and%20Java%20Developer">Send an email</a>
+            </div>
+          </article></li>
+          <li><article class="job-card" data-cat="dev">
+            <p class="job-card__cat">Software Engineering</p>
+            <h3 class="job-card__title">Front-end Web Developer</h3>
+            <ul class="job-card__meta" role="list">
+              <li><span aria-hidden="true">📍</span> Luxembourg</li>
+              <li><span aria-hidden="true">📄</span> Permanent · Full-time</li>
+              <li><span aria-hidden="true">🏷</span> HTML · CSS · JS</li>
+            </ul>
+            <p class="job-card__desc">Accessible, performant web front-ends across our portfolio. Design-system contributions, performance and accessibility focus.</p>
+            <div class="job-card__actions">
+              <a class="job-card__btn job-card__btn--linkedin" href="https://www.linkedin.com/company/edda-lu/jobs/" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>Apply on LinkedIn</a>
+              <a class="job-card__btn job-card__btn--mail" href="mailto:jobs@edda.lu?subject=Application%20—%20Front-end%20Web%20Developer">Send an email</a>
+            </div>
+          </article></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Crafts marquee — every role under one roof
+         ==================================================================== -->
+    <section class="crafts-section" id="crafts">
+      <div class="container">
+        <div class="section-head" style="max-width: 760px;">
+          <h2>Every craft Edda can offer, under one roof.</h2>
+          <p class="lead">From backend engineers to UX designers, GRC consultants to AI specialists. EDDA brings together the full spectrum of digital crafts so you only ever need one partner.</p>
+        </div>
+
+        <div class="crafts-controls">
+          <button class="crafts-pause" type="button" aria-pressed="false" aria-label="Pause animation">
+            <span class="crafts-pause__icon crafts-pause__icon--pause" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/><rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/></svg>
+            </span>
+            <span class="crafts-pause__icon crafts-pause__icon--play" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 2.5v11l10-5.5-10-5.5z" fill="currentColor"/></svg>
+            </span>
+            <span class="crafts-pause__label">Pause</span>
+          </button>
+        </div>
+
+        <div class="crafts-marquee" aria-label="EDDA team roles">
+          <div class="crafts-row">
+            <span class="craft-chip">Backend engineers</span>
+            <span class="craft-chip">Frontend engineers</span>
+            <span class="craft-chip craft-chip--accent">Fullstack engineers</span>
+            <span class="craft-chip">Mobile engineers</span>
+            <span class="craft-chip">Tech leads</span>
+            <span class="craft-chip">Solution architects</span>
+            <span class="craft-chip">Enterprise architects</span>
+            <span class="craft-chip">Engineering managers</span>
+            <!-- duplicate for seamless loop -->
+            <span class="craft-chip">Backend engineers</span>
+            <span class="craft-chip">Frontend engineers</span>
+            <span class="craft-chip craft-chip--accent">Fullstack engineers</span>
+            <span class="craft-chip">Mobile engineers</span>
+            <span class="craft-chip">Tech leads</span>
+            <span class="craft-chip">Solution architects</span>
+            <span class="craft-chip">Enterprise architects</span>
+            <span class="craft-chip">Engineering managers</span>
+          </div>
+
+          <div class="crafts-row crafts-row--reverse">
+            <span class="craft-chip">Data engineers</span>
+            <span class="craft-chip">Data scientists</span>
+            <span class="craft-chip">ML engineers</span>
+            <span class="craft-chip craft-chip--accent">AI engineers</span>
+            <span class="craft-chip">Data analysts</span>
+            <span class="craft-chip">BI consultants</span>
+            <span class="craft-chip">Data governance leads</span>
+            <span class="craft-chip">MLOps engineers</span>
+            <span class="craft-chip">Data engineers</span>
+            <span class="craft-chip">Data scientists</span>
+            <span class="craft-chip">ML engineers</span>
+            <span class="craft-chip craft-chip--accent">AI engineers</span>
+            <span class="craft-chip">Data analysts</span>
+            <span class="craft-chip">BI consultants</span>
+            <span class="craft-chip">Data governance leads</span>
+            <span class="craft-chip">MLOps engineers</span>
+          </div>
+
+          <div class="crafts-row crafts-row--slow">
+            <span class="craft-chip">DevOps engineers</span>
+            <span class="craft-chip">SRE</span>
+            <span class="craft-chip">Cloud architects</span>
+            <span class="craft-chip craft-chip--accent">Platform engineers</span>
+            <span class="craft-chip">Cybersecurity analysts</span>
+            <span class="craft-chip">Pentesters</span>
+            <span class="craft-chip">GRC consultants</span>
+            <span class="craft-chip">IAM specialists</span>
+            <span class="craft-chip">DevOps engineers</span>
+            <span class="craft-chip">SRE</span>
+            <span class="craft-chip">Cloud architects</span>
+            <span class="craft-chip craft-chip--accent">Platform engineers</span>
+            <span class="craft-chip">Cybersecurity analysts</span>
+            <span class="craft-chip">Pentesters</span>
+            <span class="craft-chip">GRC consultants</span>
+            <span class="craft-chip">IAM specialists</span>
+          </div>
+
+          <div class="crafts-row crafts-row--reverse">
+            <span class="craft-chip">UX designers</span>
+            <span class="craft-chip">UI designers</span>
+            <span class="craft-chip craft-chip--accent">Product designers</span>
+            <span class="craft-chip">Service designers</span>
+            <span class="craft-chip">Accessibility experts</span>
+            <span class="craft-chip">Product owners</span>
+            <span class="craft-chip">Scrum masters</span>
+            <span class="craft-chip">Business analysts</span>
+            <span class="craft-chip">UX designers</span>
+            <span class="craft-chip">UI designers</span>
+            <span class="craft-chip craft-chip--accent">Product designers</span>
+            <span class="craft-chip">Service designers</span>
+            <span class="craft-chip">Accessibility experts</span>
+            <span class="craft-chip">Product owners</span>
+            <span class="craft-chip">Scrum masters</span>
+            <span class="craft-chip">Business analysts</span>
+          </div>
+
+          <div class="crafts-row">
+            <span class="craft-chip">Project managers</span>
+            <span class="craft-chip">Programme managers</span>
+            <span class="craft-chip">Functional consultants</span>
+            <span class="craft-chip">QA engineers</span>
+            <span class="craft-chip craft-chip--accent">Test automation engineers</span>
+            <span class="craft-chip">M365 consultants</span>
+            <span class="craft-chip">SharePoint specialists</span>
+            <span class="craft-chip">ECM consultants</span>
+            <span class="craft-chip">Project managers</span>
+            <span class="craft-chip">Programme managers</span>
+            <span class="craft-chip">Functional consultants</span>
+            <span class="craft-chip">QA engineers</span>
+            <span class="craft-chip craft-chip--accent">Test automation engineers</span>
+            <span class="craft-chip">M365 consultants</span>
+            <span class="craft-chip">SharePoint specialists</span>
+            <span class="craft-chip">ECM consultants</span>
+          </div>
+        </div>
+
+        <div class="crafts-cta">
+          <p class="crafts-cta__text">There's a seat for every craft. Maybe one for yours.</p>
+          <div class="clients-cta__actions">
+            <a class="btn btn-primary" href="index.html#jobs">Join EDDA</a>
+            <a class="btn btn-secondary" href="index.html#contact">
+              <span>Talk to us</span>
+              <svg class="btn-arrow" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="jobs" class="jobs-wrap">
+      <div class="container jobs-card">
+        <div>
+          <h2>Join</h2>
+          <p class="lead">
+            EDDA is building long-term delivery capacity for institutional and enterprise programmes and is continuously looking for experienced professionals across all our practices.
+          </p>
+          <ul class="role-tags" role="list">
+            <li>IT consultants</li>
+            <li>Data &amp; AI specialists</li>
+            <li>Project managers</li>
+            <li>Software engineers</li>
+            <li>Cloud architects</li>
+            <li>Cybersecurity experts</li>
+            <li>UX/UI designers</li>
+          </ul>
+        </div>
+
+        <div class="cta-card">
+          <h3>Careers at EDDA</h3>
+          <p>
+            Work with leading institutions in Luxembourg and Brussels. We offer long-term missions, a collaborative team culture, and exposure to complex, high-impact programmes.
+          </p>
+          <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <a class="btn btn-primary" href="Jobs.html">View opportunities</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Spontaneous application
+         ==================================================================== -->
+    <section class="wwa-join">
+      <div class="container">
+        <div class="wwa-join__box">
+          <div>
+            <p class="kicker kicker--on-dark">Didn't find your role?</p>
+            <h2>Send us a spontaneous application.</h2>
+            <p>We're always interested in meeting senior software, data, AI, cloud, security and design professionals — even when no role is listed today.</p>
+          </div>
+          <div>
+            <a class="btn btn-primary btn--on-dark" href="mailto:jobs@edda.lu?subject=Spontaneous%20application">Get in touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (shared) -->
+  <footer role="contentinfo" id="footer" class="site-footer" tabindex="-1" style="border-color: rgb(35, 49, 67)">
+    <div class="container footer-group footer-group--top">
+      <p class="footer-title footer-group__head">Groupe <span class="footer-group__edda">EDDA</span></p>
+      <ul class="footer-group__list" role="list">
+        <li><a href="Contact.html">EDDA Luxembourg <span>Software, consulting &amp; UX</span></a></li>
+        <li><a href="Contact.html">EDDA Belgium <span>Our foothold in Brussels</span></a></li>
+        <li><a href="https://www.imas.eu/" target="_blank" rel="noopener">IMAS <span>Cyber security made simple</span></a></li>
+        <li><a href="https://www.phrenos.eu/" target="_blank" rel="noopener">Phrenos <span>European-scale events</span></a></li>
+      </ul>
+    </div>
+    <div class="container footer-grid">
+      <div>
+        <img class="footer-logo" src="img/logo-edda-footer.png" alt="EDDA" />
+        <p class="footer-copy">Your trusted partner for digital transformation.</p>
+        <ul class="footer-certs" role="list">
+          <li><img src="img/iso-9001.png" alt="ISO 9001 certified" /><span>ISO 9001</span></li>
+          <li><img src="img/iso-14001.png" alt="ISO 14001 certified" /><span>ISO 14001</span></li>
+        </ul>
+      </div>
+      <nav role="navigation" aria-label="Footer">
+        <p class="footer-title" id="footer-nav-title">Navigation</p>
+        <ul class="footer-links" role="list" aria-labelledby="footer-nav-title">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="What_We_Do.html">What we do</a></li>
+          <li><a href="Use_Cases.html">Use cases</a></li>
+          <li><a href="Who_We_Are.html">Who we are</a></li>
+          <li><a href="Jobs.html">Jobs</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-title" id="footer-offices-title">Offices</p>
+        <ul class="footer-links" role="list" aria-labelledby="footer-offices-title">
+          <li>
+            <address>
+              <strong>Windhof (Luxembourg)</strong><br />
+              3 rue de l'industrie<br />
+              L‑8399 Windhof<br />
+              <a href="tel:+35228860700">+352 28 86 07</a>
+            </address>
+          </li>
+          <li>
+            <address>
+              <strong>Brussels</strong><br />
+              Chaussée de la Hulpe, 185<br />
+              <a href="tel:+35228860700">+352 28 86 07</a>
+            </address>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title" id="footer-contact-title">Contact</p>
+        <div class="footer-contact" aria-labelledby="footer-contact-title">
+          <a href="mailto:info@edda.lu"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M4 7.5l8 5.5 8-5.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>info@edda.lu</span></a>
+          <a href="https://wa.me/35228860700" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.9 8.4c.3-.6.9-.5 1.2 0l.6 1.1c.2.4 0 .7-.3 1-.3.3-.3.5-.1.8.5.9 1.1 1.4 2 1.9.3.2.6.1.8-.2.3-.3.6-.5 1-.3l1.1.6c.5.3.6.8 0 1.2-1 .7-2.1.7-3.3.1a8.4 8.4 0 0 1-3.7-3.7c-.6-1.2-.6-2.2.1-3.2z" fill="currentColor"/></svg><span>WhatsApp</span></a>
+        </div>
+        <ul class="footer-social" role="list">
+          <li><a href="https://www.linkedin.com/company/eddalux" target="_blank" rel="noopener" aria-label="EDDA on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.55h.05c.53-.95 1.83-1.85 3.65-1.85 2.9 0 3.9 1.85 3.9 4.75V21h-4v-5.9c0-1.4-.5-2.35-1.75-2.35-1.05 0-1.65.7-1.9 1.4-.1.25-.13.6-.13.95V21h-3.6z"/></svg></a></li>
+          <li><a href="https://www.facebook.com/eddaluxembourg" target="_blank" rel="noopener" aria-label="EDDA on Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.8c0-.85.25-1.4 1.5-1.4h1.6V4.7c-.3-.05-1.3-.15-2.5-.15-2.5 0-4.1 1.5-4.1 4.3v1.65H7.5v3h2.5V21z"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-legal">
+      <nav role="navigation" aria-label="Legal">
+        <ul role="list" class="footer-links footer-links--inline">
+          <li><a href="#">Cookie Settings</a></li>
+          <li><a href="#">Privacy Statement</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Legal</a></li>
+          <li><a href="Accessibility_Statement.html">Accessibility Statement</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Crafts marquee pause toggle (same as What We Do)
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.querySelector('.crafts-pause');
+      const marquee = document.querySelector('.crafts-marquee');
+      if (!btn || !marquee) return;
+      btn.addEventListener('click', () => {
+        const paused = marquee.classList.toggle('is-paused');
+        btn.setAttribute('aria-pressed', String(paused));
+        btn.setAttribute('aria-label', paused ? 'Resume animation' : 'Pause animation');
+        btn.querySelector('.crafts-pause__label').textContent = paused ? 'Play' : 'Pause';
+      });
+    });
+  </script>
+</body>
+</html>
