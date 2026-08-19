@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/hero-tabs.css" />
+  <link rel="preload" as="image" href="img/hero/hero-software.jpg" />
   <style>
 .approach-item--cert{overflow:hidden;isolation:isolate}
 .approach-item--cert>:not(.cert-iso-mark){position:relative;z-index:1}
@@ -165,6 +167,7 @@
   <script src="js/header-scroll.js" defer></script>
   <script src="js/clients-gradient.js" defer></script>
   <script src="js/hero-parallax.js" defer></script>
+  <script src="js/hero-tabs.js" defer></script>
 
   <!--
     ============================================================================
@@ -174,19 +177,108 @@
     ============================================================================
   -->
   <main role="main" id="top" tabindex="-1">
-    <section class="hero hero--photo">
-      <div class="hero__photo" aria-hidden="true"></div>
-      <div class="hero__parallax" aria-hidden="true" data-parallax-root>
-        <span class="hero__orb hero__orb--1" data-parallax-speed="0.18"></span>
-        <span class="hero__orb hero__orb--2" data-parallax-speed="0.30"></span>
-        <span class="hero__orb hero__orb--3" data-parallax-speed="0.12"></span>
-      </div>
-      <div class="container hero-inner">
-        <div>
-          <h1 style="margin: 83px 0px 0px">Your partner for <span class="h1-light">digital transformation</span></h1>
-          <p>We build and nurture relationships. We have significantly expanded our technological and methodological expertise in several domains. Contact us to find out more about our end-to-end approach to ensure our clients' success.</p>
-        </div>
+    <!--
+      ==========================================================================
+      Hero à onglets glissants  (proposition — voir css/hero-tabs.css)
+      Chaque onglet correspond à une practice et à sa page dédiée. Le contenu
+      textuel reprend les taglines des pages services, sans reformulation.
+      ==========================================================================
+    -->
+    <section class="hero hero--tabs" data-hero-tabs>
 
+      <!-- Fonds : une couche par practice, croisées en fondu -->
+      <div class="hero-tabs__media" aria-hidden="true">
+        <div class="hero-tabs__bg is-active" data-hero-bg="img/hero/hero-software.jpg" style="background-image:url('img/hero/hero-software.jpg')"></div>
+        <div class="hero-tabs__bg" data-hero-bg="img/hero/hero-data.jpg" style="background-image:url('img/hero/hero-data.jpg')"></div>
+        <div class="hero-tabs__bg" data-hero-bg="img/hero/hero-ai.jpg" style="background-image:url('img/hero/hero-ai.jpg')"></div>
+        <div class="hero-tabs__bg" data-hero-bg="img/hero/hero-cloud.jpg" style="background-image:url('img/hero/hero-cloud.jpg')"></div>
+        <div class="hero-tabs__bg" data-hero-bg="img/hero/hero-workplace.jpg" style="background-image:url('img/hero/hero-workplace.jpg')"></div>
+        <div class="hero-tabs__bg" data-hero-bg="img/hero/hero-experience.jpg" style="background-image:url('img/hero/hero-experience.jpg')"></div>
+      </div>
+      <div class="hero-tabs__scrim" aria-hidden="true"></div>
+
+      <div class="container hero-tabs__inner">
+        <h1 class="hero-tabs__lede">Your partner for <span class="h1-light">digital transformation</span></h1>
+
+        <div class="hero-tabs__slides">
+          <div class="hero-tabs__slide is-active" data-hero-slide role="tabpanel" id="hero-panel-1" aria-labelledby="hero-tab-1">
+            <div class="hero-tabs__slide-inner">
+              <p class="hero-tabs__title">Software Development</p>
+              <p class="hero-tabs__desc">Technology is the heart of our business, but never our starting point in the design of customised solutions.</p>
+              <a class="hero-tabs__cta" href="Software_Development.html">Explore this practice
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-tabs__slide" data-hero-slide role="tabpanel" id="hero-panel-2" aria-labelledby="hero-tab-2">
+            <div class="hero-tabs__slide-inner">
+              <p class="hero-tabs__title">Data Intelligence</p>
+              <p class="hero-tabs__desc">We offer professional IT services for transforming raw data into visually intelligible information and knowledge.</p>
+              <a class="hero-tabs__cta" href="Data_Intelligence.html">Explore this practice
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-tabs__slide" data-hero-slide role="tabpanel" id="hero-panel-3" aria-labelledby="hero-tab-3">
+            <div class="hero-tabs__slide-inner">
+              <p class="hero-tabs__title">AI Engineering</p>
+              <p class="hero-tabs__desc">Agentic AI, copilots and machine learning, engineered to ship into production, not just pass a demo.</p>
+              <a class="hero-tabs__cta" href="AI_Engineering.html">Explore this practice
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-tabs__slide" data-hero-slide role="tabpanel" id="hero-panel-4" aria-labelledby="hero-tab-4">
+            <div class="hero-tabs__slide-inner">
+              <p class="hero-tabs__title">Infrastructure &amp; Cloud</p>
+              <p class="hero-tabs__desc">We can help you solve any on-site or « in the cloud » issues with your IT systems infrastructure.</p>
+              <a class="hero-tabs__cta" href="Cloud_Infrastructure.html">Explore this practice
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-tabs__slide" data-hero-slide role="tabpanel" id="hero-panel-5" aria-labelledby="hero-tab-5">
+            <div class="hero-tabs__slide-inner">
+              <p class="hero-tabs__title">Digital Workplace &amp; ECM</p>
+              <!-- La tagline de la page Digital_Workplace_ECM.html est encore
+                   du Lorem ipsum en ligne : on reprend ici le descriptif de la
+                   carte service, à faire valider par EDDA. -->
+              <p class="hero-tabs__desc">Microsoft 365, SharePoint, document management, collaboration and intranet solutions.</p>
+              <a class="hero-tabs__cta" href="Digital_Workplace_ECM.html">Explore this practice
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-tabs__slide" data-hero-slide role="tabpanel" id="hero-panel-6" aria-labelledby="hero-tab-6">
+            <div class="hero-tabs__slide-inner">
+              <p class="hero-tabs__title">Experience Design &amp; Accessibility</p>
+              <p class="hero-tabs__desc">User centric approach, we stay connected across the entire brand experience.</p>
+              <a class="hero-tabs__cta" href="Experience_Design.html">Explore this practice
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barre d'onglets collée au bord bas de la hero -->
+      <div class="hero-tabs__nav">
+          <div class="hero-tabs__track" role="tablist" aria-label="Our practices" data-hero-track>
+            <span class="hero-tabs__pill" aria-hidden="true" data-hero-pill>
+              <span class="hero-tabs__pill-label" data-hero-pill-label></span>
+            </span>
+            <button class="hero-tabs__tab" type="button" role="tab" id="hero-tab-1" aria-controls="hero-panel-1" aria-selected="true" tabindex="0">Software Development</button>
+            <button class="hero-tabs__tab" type="button" role="tab" id="hero-tab-2" aria-controls="hero-panel-2" aria-selected="false" tabindex="-1">Data Intelligence</button>
+            <button class="hero-tabs__tab" type="button" role="tab" id="hero-tab-3" aria-controls="hero-panel-3" aria-selected="false" tabindex="-1">AI Engineering</button>
+            <button class="hero-tabs__tab" type="button" role="tab" id="hero-tab-4" aria-controls="hero-panel-4" aria-selected="false" tabindex="-1">Infrastructure &amp; Cloud</button>
+            <button class="hero-tabs__tab" type="button" role="tab" id="hero-tab-5" aria-controls="hero-panel-5" aria-selected="false" tabindex="-1">Digital Workplace &amp; ECM</button>
+            <button class="hero-tabs__tab" type="button" role="tab" id="hero-tab-6" aria-controls="hero-panel-6" aria-selected="false" tabindex="-1">Experience Design &amp; Accessibility</button>
+          </div>
       </div>
     </section>
 

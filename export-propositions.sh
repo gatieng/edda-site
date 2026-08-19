@@ -11,8 +11,8 @@ OUT="export"
 rm -rf "$OUT"
 mkdir -p "$OUT/fichiers-modifies"
 
-git diff original...propositions > "$OUT/propositions.patch"
-git diff --stat original...propositions > "$OUT/RESUME.md.tmp"
+git diff original...propositions -- site > "$OUT/propositions.patch"
+git diff --stat original...propositions -- site > "$OUT/RESUME.md.tmp"
 
 {
   echo "# Propositions de modifications — site EDDA"
@@ -32,7 +32,7 @@ git diff --stat original...propositions > "$OUT/RESUME.md.tmp"
 rm "$OUT/RESUME.md.tmp"
 
 # Copie des fichiers modifiés/ajoutés en conservant l'arborescence
-git diff --name-only --diff-filter=ACMR original...propositions | while read -r f; do
+git diff --name-only --diff-filter=ACMR original...propositions -- site | while read -r f; do
   mkdir -p "$OUT/fichiers-modifies/$(dirname "${f#site/}")"
   cp "$f" "$OUT/fichiers-modifies/${f#site/}"
 done
