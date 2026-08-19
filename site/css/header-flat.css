@@ -1,0 +1,178 @@
+/* ============================================================
+   Header plat + hero encadrée
+   Proposition alignée sur la maquette fournie : le header n'est plus une
+   pilule flottante en surimpression, mais une barre blanche posée
+   au-dessus d'une hero détachée des bords de la page.
+
+   Chargé après styles.css, donc ces règles écrasent volontairement
+   celles du header d'origine. Les sélecteurs de navigation sont
+   délibérément profonds (`.header-nav > nav > ul > li > a`) pour ne pas
+   toucher aux liens du méga-menu, qui gardent leur mise en forme.
+   ============================================================ */
+
+/* --- La barre ------------------------------------------------ */
+
+.site-header {
+  padding: 0;
+  background: var(--white);
+  transition: transform 0.32s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* L'auto-masquage au défilement déplaçait la pilule intérieure ; comme il
+   n'y a plus de pilule, c'est toute la barre qui coulisse. */
+.site-header.is-hidden {
+  transform: translateY(-100%);
+}
+.site-header.is-hidden .header-pill {
+  transform: none;
+}
+
+/* Gouttière de 28 px, identique à l'encoche de la hero : les deux bords
+   gauches s'alignent, c'est ce qui fait tenir le cadrage. */
+.site-header > .container {
+  width: min(1560px, calc(100% - 56px));
+}
+
+.header-pill {
+  min-height: 92px;
+  padding: 0;
+  gap: 0;
+  background: none;
+  backdrop-filter: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* --- Le logo ------------------------------------------------- */
+/* Le SVG est en #4d3bef : on le désature et on l'éclaircit pour obtenir
+   le gris de la maquette, et on retire le filtre au survol pour retrouver
+   la couleur de marque. Un seul fichier, aucune variante à maintenir. */
+
+.header-brand img {
+  height: 46px;
+  filter: grayscale(1) brightness(1.72);
+  transition: filter 0.22s ease;
+}
+
+.header-brand:hover img,
+.header-brand:focus-visible img {
+  filter: none;
+}
+
+/* --- La navigation (desktop uniquement) --------------------- */
+/* Sous 900 px, styles.css transforme la navigation en dialogue plein
+   écran : on n'y touche pas. */
+
+@media (min-width: 901px) {
+
+  .header-nav {
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .header-nav > nav > ul {
+    gap: clamp(26px, 4.4vw, 78px);
+  }
+
+  /* Le lien « Home page » n'existe pas dans la maquette : le logo joue ce
+     rôle. Il reste présent dans le DOM pour le menu mobile. */
+  .header-nav > nav > ul > li:has(> a[href="#top"]),
+  .header-nav > nav > ul > li:has(> a[href="index.html"]) {
+    display: none;
+  }
+
+  .header-nav > nav > ul > li > a,
+  .header-nav > nav > ul > li > .header-nav__submenu-toggle,
+  .header-cta {
+    padding: 8px 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    color: #8b8d98;
+    font-size: 0.95rem; /* 15.2px */
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .header-nav > nav > ul > li > a:hover,
+  .header-nav > nav > ul > li > .header-nav__submenu-toggle:hover,
+  .header-cta:hover {
+    background: none;
+    color: var(--brand);
+  }
+
+  .header-nav > nav > ul > li > a:focus-visible,
+  .header-nav > nav > ul > li > .header-nav__submenu-toggle:focus-visible,
+  .header-cta:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 4px;
+    box-shadow: none;
+    color: var(--brand);
+  }
+
+  /* Page courante : simplement plus sombre, sans pastille ni bordure. */
+  .header-nav > nav > ul > li > a[aria-current="page"],
+  .header-nav > nav > ul > li > .header-nav__submenu-toggle[data-section-current="true"] {
+    background: none;
+    border: 0;
+    color: var(--text);
+  }
+
+  /* Le CTA Contact devient le dernier élément de la rangée, au même
+     traitement que les autres : la maquette ne laisse pas de place pour un
+     bouton, et la navigation s'étend jusqu'au bord droit. */
+  .header-cta {
+    margin-left: clamp(26px, 4.4vw, 78px);
+    min-height: 0;
+    height: auto;
+    box-shadow: none;
+  }
+
+  /* Flèche des entrées à sous-menu : hampe + pointe, comme la maquette. */
+  .header-nav__chevron {
+    width: 12px;
+    height: 12px;
+    stroke-width: 1.3;
+  }
+
+  .header-nav > nav > ul > li > .header-nav__submenu-toggle {
+    gap: 8px;
+  }
+}
+
+/* --- La hero encadrée --------------------------------------- */
+/* `.page-home` est posée sur <body> de la page d'accueil : elle annule la
+   remontée de `main` sous le header (styles.css l.127) pour que la barre
+   blanche ne recouvre plus la hero, et détache la hero des bords. */
+
+.page-home {
+  --hero-frame-inset: 28px;
+}
+
+.page-home main {
+  margin-top: 0;
+}
+
+.page-home .hero--tabs {
+  padding-top: 0;
+  margin-inline: var(--hero-frame-inset);
+  /* Un cadre à angles vifs, comme la maquette. Passer cette valeur à
+     20px suffit si vous préférez une carte arrondie. */
+  border-radius: 0;
+  /* Le header ne recouvre plus la hero : il faut donc lui retirer sa
+     hauteur, sinon la barre d'onglets passe sous la ligne de flottaison
+     sur un écran de portable. */
+  min-height: min(760px, calc(100vh - 120px));
+  min-height: min(760px, calc(100svh - 120px));
+}
+
+/* Sous 760 px, l'encoche latérale ne fait que rogner la lecture. */
+@media (max-width: 760px) {
+  .page-home {
+    --hero-frame-inset: 0px;
+  }
+  .header-pill {
+    min-height: 72px;
+  }
+}

@@ -19,10 +19,11 @@
 (function () {
   'use strict';
 
-  var AUTOPLAY_MS = 5500;
-  var MIN_DURATION = 360;   // ms, saut entre deux onglets voisins
-  var MAX_EXTRA = 340;      // ms ajoutées au maximum pour un saut d'un bord à l'autre
-  var PX_PER_MS = 0.34;     // pente mesurée sur la référence
+  var AUTOPLAY_MS = 4200;   // intervalle entre deux onglets
+  var FIRST_DELAY_MS = 900; // le carrousel démarre presque tout de suite
+  var MIN_DURATION = 210;   // ms, saut entre deux onglets voisins
+  var MAX_EXTRA = 190;      // ms ajoutées au maximum pour un saut d'un bord à l'autre
+  var PX_PER_MS = 0.19;     // pente mesurée sur la référence, resserrée à la demande
 
   var root = document.querySelector('[data-hero-tabs]');
   if (!root) return;
@@ -46,6 +47,7 @@
   var activeField = 0;
   var travelTimer = null;
   var leaveTimer = null;
+  var remeasureTimer = null;
 
   /* --- Formes animées --------------------------------------- */
 
@@ -93,6 +95,13 @@
       slides[i].style.setProperty('--shift', ratio.toFixed(4));
       slides[i].setAttribute('data-align', ratio > 0.52 ? 'end' : 'start');
     });
+    // Une remesure pendant un déplacement le ferait sauter : on attend la
+    // fin du trajet avant de repositionner l'indicateur.
+    if (pill.classList.contains('is-travelling')) {
+      clearTimeout(remeasureTimer);
+      remeasureTimer = setTimeout(measure, 300);
+      return;
+    }
     positionPill(current, 0);
     pill.classList.add('is-ready');
   }
@@ -118,7 +127,7 @@
     clearTimeout(travelTimer);
     travelTimer = setTimeout(function () {
       pill.classList.remove('is-travelling');
-    }, Math.max(0, duration - 60));
+    }, Math.max(0, duration - 40));
 
     // Onglets
     tabs.forEach(function (tab, i) {
@@ -137,7 +146,7 @@
     slides[index].classList.add('is-active');
     leaveTimer = setTimeout(function () {
       slides[previous].classList.remove('is-leaving');
-    }, 700);
+    }, 460);
 
     applyPalette(index, false);
 
@@ -327,5 +336,5 @@
 
   syncState();
   restartProgress();
-  schedule(AUTOPLAY_MS);
+  schedule(FIRST_DELAY_MS);
 })();

@@ -18,6 +18,11 @@
   flex-direction: column;
   min-height: min(780px, 94vh);
   background: var(--dark);
+  /* Contrairement à `.hero`, on ne rogne pas : l'ombre portée de
+     l'indicateur doit pouvoir déborder sur la section blanche du dessous,
+     c'est ce qui lui donne son aspect d'onglet accroché au bord. Les
+     formes du fond, elles, sont rognées par `.hero-tabs__media`. */
+  overflow: visible;
 }
 
 /* --- Fond : formes abstraites animées ----------------------- */
@@ -46,7 +51,7 @@
   opacity: 0;
   transform: scale(1.05) rotate(var(--field-rot, 0deg));
   /* Le fond traîne volontairement derrière le texte. */
-  transition: opacity 1100ms ease 140ms, transform 3200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: opacity 620ms ease 60ms, transform 1600ms cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: opacity, transform;
 }
 
@@ -55,62 +60,79 @@
   transform: scale(1) rotate(var(--field-rot, 0deg));
 }
 
+/* Aspect « liquid gradient » : les formes sont des ellipses, pas des
+   cercles, et on anime rotation + échelle non uniforme. Une ellipse qui
+   pivote en s'étirant lit comme de la matière qui coule, là où un cercle
+   qui grossit lit comme une lampe qui pulse.
+
+   Tout est fait en `transform` uniquement (jamais `border-radius`, `width`
+   ni `filter`) : le compositeur s'en charge sans repeindre la surface, ce
+   qui autorise des durées courtes sans faire chuter le débit d'images. */
 .hero-blob {
   position: absolute;
-  border-radius: 50%;
   mix-blend-mode: screen;
   will-change: transform;
 }
 
-/* Chute très douce du dégradé : les formes se fondent l'une dans l'autre
-   sans avoir besoin d'un `filter: blur()` coûteux sur toute la surface. */
 .hero-blob--1 {
-  width: 64vw; height: 64vw;
-  left: -10vw; top: -16vw;
-  background: radial-gradient(circle at 50% 50%,
-    rgba(var(--c1), 0.95) 0%, rgba(var(--c1), 0.5) 30%, rgba(var(--c1), 0) 66%);
-  animation: hero-drift-a 34s ease-in-out infinite;
+  width: 82vw; height: 54vw;
+  left: -16vw; top: -16vw;
+  background: radial-gradient(ellipse closest-side at 50% 50%,
+    rgba(var(--c1), 0.95) 0%, rgba(var(--c1), 0.48) 38%, rgba(var(--c1), 0) 74%);
+  animation: hero-flow-a 13s ease-in-out infinite;
 }
 
 .hero-blob--2 {
-  width: 54vw; height: 54vw;
-  right: -12vw; top: -8vw;
-  background: radial-gradient(circle at 50% 50%,
-    rgba(var(--c2), 0.95) 0%, rgba(var(--c2), 0.5) 30%, rgba(var(--c2), 0) 66%);
-  animation: hero-drift-b 27s ease-in-out infinite reverse;
+  width: 58vw; height: 72vw;
+  right: -14vw; top: -22vw;
+  background: radial-gradient(ellipse closest-side at 50% 50%,
+    rgba(var(--c2), 0.95) 0%, rgba(var(--c2), 0.48) 38%, rgba(var(--c2), 0) 74%);
+  animation: hero-flow-b 10s ease-in-out infinite reverse;
 }
 
 .hero-blob--3 {
-  width: 50vw; height: 50vw;
-  left: 20vw; bottom: -24vw;
-  background: radial-gradient(circle at 50% 50%,
-    rgba(var(--c3), 0.9) 0%, rgba(var(--c3), 0.45) 32%, rgba(var(--c3), 0) 68%);
-  animation: hero-drift-c 41s ease-in-out infinite;
+  width: 70vw; height: 46vw;
+  left: 14vw; bottom: -22vw;
+  background: radial-gradient(ellipse closest-side at 50% 50%,
+    rgba(var(--c3), 0.9) 0%, rgba(var(--c3), 0.44) 40%, rgba(var(--c3), 0) 76%);
+  animation: hero-flow-c 16s ease-in-out infinite;
 }
 
 .hero-blob--4 {
-  width: 42vw; height: 42vw;
-  right: 12vw; bottom: -16vw;
-  background: radial-gradient(circle at 50% 50%,
-    rgba(var(--c4), 0.85) 0%, rgba(var(--c4), 0.4) 34%, rgba(var(--c4), 0) 70%);
-  animation: hero-drift-b 33s ease-in-out infinite;
+  width: 48vw; height: 62vw;
+  right: 6vw; bottom: -26vw;
+  background: radial-gradient(ellipse closest-side at 50% 50%,
+    rgba(var(--c4), 0.88) 0%, rgba(var(--c4), 0.42) 40%, rgba(var(--c4), 0) 76%);
+  animation: hero-flow-b 11s ease-in-out infinite;
 }
 
-@keyframes hero-drift-a {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  33%      { transform: translate3d(11%, 7%, 0) scale(1.13); }
-  66%      { transform: translate3d(-6%, 13%, 0) scale(0.93); }
+/* Cinquième forme, plus petite et plus rapide : c'est elle qui donne le
+   frémissement de surface caractéristique du procédé. */
+.hero-blob--5 {
+  width: 40vw; height: 30vw;
+  left: 26vw; top: 8vw;
+  background: radial-gradient(ellipse closest-side at 50% 50%,
+    rgba(var(--c2), 0.7) 0%, rgba(var(--c2), 0.3) 42%, rgba(var(--c2), 0) 78%);
+  animation: hero-flow-a 8s ease-in-out infinite reverse;
 }
 
-@keyframes hero-drift-b {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  40%      { transform: translate3d(-13%, 9%, 0) scale(1.09); }
-  70%      { transform: translate3d(7%, -8%, 0) scale(0.95); }
+@keyframes hero-flow-a {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg) scale3d(1, 1, 1); }
+  25%      { transform: translate3d(9%, 6%, 0) rotate(26deg) scale3d(1.2, 0.84, 1); }
+  50%      { transform: translate3d(-7%, 12%, 0) rotate(-16deg) scale3d(0.88, 1.24, 1); }
+  75%      { transform: translate3d(7%, -7%, 0) rotate(12deg) scale3d(1.14, 1.02, 1); }
 }
 
-@keyframes hero-drift-c {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1.02) rotate(0deg); }
-  50%      { transform: translate3d(9%, -11%, 0) scale(0.9) rotate(18deg); }
+@keyframes hero-flow-b {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg) scale3d(1, 1, 1); }
+  30%      { transform: translate3d(-12%, 9%, 0) rotate(-22deg) scale3d(1.22, 0.9, 1); }
+  60%      { transform: translate3d(10%, -6%, 0) rotate(18deg) scale3d(0.86, 1.18, 1); }
+}
+
+@keyframes hero-flow-c {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg) scale3d(1.02, 1, 1); }
+  35%      { transform: translate3d(11%, -10%, 0) rotate(20deg) scale3d(0.88, 1.26, 1); }
+  70%      { transform: translate3d(-9%, 7%, 0) rotate(-14deg) scale3d(1.24, 0.9, 1); }
 }
 
 /* Grain : la référence en a un très visible. Il casse aussi le banding
@@ -170,13 +192,19 @@
 
 /* --- Contenu ------------------------------------------------ */
 
+/* La maquette n'enferme pas le contenu dans le conteneur de 1120 px : il
+   occupe toute la largeur du cadre, avec une marge de 44 px. Les libellés
+   d'onglets s'alignent dessus (28 px de piste + 16 px de bouton). */
 .hero-tabs__inner {
   position: relative;
   z-index: 2;
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 44px 0 32px;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 44px 44px 32px;
 }
 
 .hero--tabs .hero-tabs__lede {
@@ -216,10 +244,10 @@
   transform: translate3d(0, 70px, 0);
   filter: blur(14px);
   transition:
-    opacity 520ms ease,
-    transform 620ms cubic-bezier(0.22, 1, 0.28, 1),
-    filter 520ms ease,
-    visibility 0s linear 620ms;
+    opacity 300ms ease,
+    transform 380ms cubic-bezier(0.22, 1, 0.28, 1),
+    filter 300ms ease,
+    visibility 0s linear 380ms;
   will-change: opacity, transform, filter;
 }
 
@@ -230,24 +258,24 @@
   transform: translate3d(0, 0, 0);
   filter: blur(0);
   transition:
-    opacity 560ms ease 80ms,
-    transform 720ms cubic-bezier(0.22, 1, 0.28, 1) 80ms,
-    filter 560ms ease 80ms,
+    opacity 320ms ease 40ms,
+    transform 440ms cubic-bezier(0.22, 1, 0.28, 1) 40ms,
+    filter 320ms ease 40ms,
     visibility 0s linear 0s;
 }
 
 /* Le slide sortant monte et se floute au lieu de simplement disparaître. */
 /* `visibility` n'est pas redéfinie ici : la règle de base la passe à
-   `hidden` avec 620 ms de retard, ce qui laisse le slide sortant visible
+   `hidden` avec 380 ms de retard, ce qui laisse le slide sortant visible
    le temps de son animation puis le retire de l'ordre de tabulation. */
 .hero-tabs__slide.is-leaving {
   opacity: 0;
   transform: translate3d(0, -110px, 0);
   filter: blur(16px);
   transition:
-    opacity 460ms ease,
-    transform 640ms cubic-bezier(0.4, 0, 0.6, 1),
-    filter 460ms ease;
+    opacity 260ms ease,
+    transform 400ms cubic-bezier(0.4, 0, 0.6, 1),
+    filter 260ms ease;
 }
 
 /* Le bloc de texte se décale horizontalement pour se placer au-dessus
@@ -335,7 +363,7 @@
   display: flex;
   justify-content: space-between;
   gap: 4px;
-  padding-inline: 20px;
+  padding-inline: 28px;
   /* Sur petit écran la barre défile horizontalement plutôt que de
      comprimer six libellés jusqu'à l'illisible. */
   overflow-x: auto;
@@ -395,8 +423,8 @@
   pointer-events: none;
   transform: translate3d(0, 0, 0);
   transition:
-    transform 460ms cubic-bezier(0.33, 0, 0.2, 1),
-    width 460ms cubic-bezier(0.33, 0, 0.2, 1);
+    transform 260ms cubic-bezier(0.33, 0, 0.2, 1),
+    width 260ms cubic-bezier(0.33, 0, 0.2, 1);
   will-change: transform, width;
 }
 
@@ -412,7 +440,7 @@
   white-space: nowrap;
   color: #3b4256;
   opacity: 1;
-  transition: opacity 220ms ease 140ms;
+  transition: opacity 150ms ease 70ms;
 }
 
 /* Fine barre de progression sur l'arête haute de l'indicateur : elle rend
@@ -458,7 +486,7 @@
 
 .hero-tabs__pill.is-travelling .hero-tabs__pill-label {
   opacity: 0;
-  transition: opacity 120ms ease;
+  transition: opacity 80ms ease;
 }
 
 /* --- Responsive --------------------------------------------- */
@@ -477,7 +505,10 @@
     min-height: 0;
   }
   .hero-tabs__inner {
-    padding: 32px 0 28px;
+    padding: 32px 20px 28px;
+  }
+  .hero-tabs__track {
+    padding-inline: 8px;
   }
   .hero-tabs__slides {
     margin-top: 28px;
