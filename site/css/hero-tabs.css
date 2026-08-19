@@ -20,44 +20,152 @@
   background: var(--dark);
 }
 
-/* --- Couches d'images de fond ------------------------------- */
+/* --- Fond : formes abstraites animées ----------------------- */
+
+/* La référence n'utilise pas d'image mais de grandes formes organiques
+   très floutées, en deux teintes fortement contrastées par slide (mesuré
+   sur la vidéo : orange 25° + bleu 203°, vert 138° + indigo 243°, etc.).
+   On reproduit le procédé avec des dégradés radiaux en `mix-blend-mode:
+   screen` sur le navy de la charte : aucune image à charger, et les
+   couleurs restent modifiables ci-dessous, palette par palette. */
 
 .hero-tabs__media {
   position: absolute;
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  background: var(--dark);
 }
 
-.hero-tabs__bg {
+/* Deux champs alternés (A/B) : le suivant reçoit la nouvelle palette puis
+   apparaît en fondu par-dessus. Deux couches suffisent pour un croisement
+   propre, au lieu d'une couche animée par onglet. */
+.hero-tabs__field {
   position: absolute;
-  inset: 0;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  inset: -12%;
   opacity: 0;
-  /* Le fond traîne volontairement derrière le texte : la transition est
-     plus longue et démarre après un court délai. */
-  transition: opacity 900ms ease 160ms, transform 2400ms ease-out;
-  transform: scale(1.06);
+  transform: scale(1.05) rotate(var(--field-rot, 0deg));
+  /* Le fond traîne volontairement derrière le texte. */
+  transition: opacity 1100ms ease 140ms, transform 3200ms cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: opacity, transform;
 }
 
-.hero-tabs__bg.is-active {
+.hero-tabs__field.is-active {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) rotate(var(--field-rot, 0deg));
 }
 
-/* Voile sombre : reprend exactement la recette des pages services
-   (`.sub-hero--media::before`) pour rester cohérent avec la charte. */
-.hero-tabs__scrim {
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+/* Chute très douce du dégradé : les formes se fondent l'une dans l'autre
+   sans avoir besoin d'un `filter: blur()` coûteux sur toute la surface. */
+.hero-blob--1 {
+  width: 64vw; height: 64vw;
+  left: -10vw; top: -16vw;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(var(--c1), 0.95) 0%, rgba(var(--c1), 0.5) 30%, rgba(var(--c1), 0) 66%);
+  animation: hero-drift-a 34s ease-in-out infinite;
+}
+
+.hero-blob--2 {
+  width: 54vw; height: 54vw;
+  right: -12vw; top: -8vw;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(var(--c2), 0.95) 0%, rgba(var(--c2), 0.5) 30%, rgba(var(--c2), 0) 66%);
+  animation: hero-drift-b 27s ease-in-out infinite reverse;
+}
+
+.hero-blob--3 {
+  width: 50vw; height: 50vw;
+  left: 20vw; bottom: -24vw;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(var(--c3), 0.9) 0%, rgba(var(--c3), 0.45) 32%, rgba(var(--c3), 0) 68%);
+  animation: hero-drift-c 41s ease-in-out infinite;
+}
+
+.hero-blob--4 {
+  width: 42vw; height: 42vw;
+  right: 12vw; bottom: -16vw;
+  background: radial-gradient(circle at 50% 50%,
+    rgba(var(--c4), 0.85) 0%, rgba(var(--c4), 0.4) 34%, rgba(var(--c4), 0) 70%);
+  animation: hero-drift-b 33s ease-in-out infinite;
+}
+
+@keyframes hero-drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(11%, 7%, 0) scale(1.13); }
+  66%      { transform: translate3d(-6%, 13%, 0) scale(0.93); }
+}
+
+@keyframes hero-drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  40%      { transform: translate3d(-13%, 9%, 0) scale(1.09); }
+  70%      { transform: translate3d(7%, -8%, 0) scale(0.95); }
+}
+
+@keyframes hero-drift-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.02) rotate(0deg); }
+  50%      { transform: translate3d(9%, -11%, 0) scale(0.9) rotate(18deg); }
+}
+
+/* Grain : la référence en a un très visible. Il casse aussi le banding
+   des grands dégradés, sans aucune requête réseau. */
+.hero-tabs__grain {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* Voile : plus léger qu'avec une photo, puisque le fond est maîtrisé.
+   Il assombrit surtout la gauche (où vit le texte) et le bas (barre). */
+.hero-tabs__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(15, 18, 40, 0.72) 0%, rgba(15, 18, 40, 0.38) 42%, rgba(15, 18, 40, 0.68) 100%),
-    linear-gradient(90deg, rgba(15, 18, 40, 0.58) 0%, rgba(15, 18, 40, 0.18) 62%, rgba(15, 18, 40, 0.05) 100%);
+    linear-gradient(90deg, rgba(15, 18, 40, 0.72) 0%, rgba(15, 18, 40, 0.34) 48%, rgba(15, 18, 40, 0.1) 100%),
+    linear-gradient(180deg, rgba(15, 18, 40, 0.45) 0%, rgba(15, 18, 40, 0.12) 34%, rgba(15, 18, 40, 0.55) 100%);
+}
+
+/* --- Palettes, une par practice ----------------------------- */
+/* Même principe que la référence : une teinte froide dominante et un
+   accent contrasté. Les valeurs sont celles de la charte EDDA
+   (--brand, --primary-*, --accent-magenta) plutôt que celles de Weaverly. */
+
+.hero-tabs__field.pal-1 { /* Software Development */
+  --c1: 77, 59, 239; --c2: 60, 130, 255; --c3: 0, 205, 255; --c4: 108, 80, 255;
+  --field-rot: 0deg;
+}
+.hero-tabs__field.pal-2 { /* Data Intelligence */
+  --c1: 43, 110, 240; --c2: 18, 182, 166; --c3: 108, 80, 255; --c4: 0, 205, 255;
+  --field-rot: -7deg;
+}
+.hero-tabs__field.pal-3 { /* AI Engineering */
+  --c1: 125, 90, 255; --c2: 255, 77, 141; --c3: 0, 108, 255; --c4: 200, 80, 220;
+  --field-rot: 6deg;
+}
+.hero-tabs__field.pal-4 { /* Infrastructure & Cloud */
+  --c1: 0, 108, 255; --c2: 0, 205, 255; --c3: 90, 120, 220; --c4: 77, 59, 239;
+  --field-rot: -4deg;
+}
+.hero-tabs__field.pal-5 { /* Digital Workplace & ECM */
+  --c1: 80, 100, 200; --c2: 255, 209, 72; --c3: 108, 75, 255; --c4: 60, 130, 255;
+  --field-rot: 9deg;
+}
+.hero-tabs__field.pal-6 { /* Experience Design & Accessibility */
+  --c1: 200, 80, 220; --c2: 255, 77, 141; --c3: 125, 90, 255; --c4: 43, 110, 240;
+  --field-rot: -9deg;
 }
 
 /* --- Contenu ------------------------------------------------ */
@@ -281,6 +389,7 @@
   place-items: center;
   padding: 0 16px;
   border-radius: 12px 12px 0 0;
+  overflow: hidden; /* pour que la barre de progression suive les coins */
   background: var(--white);
   box-shadow: 0 14px 28px rgba(9, 13, 32, 0.22);
   pointer-events: none;
@@ -304,6 +413,47 @@
   color: #3b4256;
   opacity: 1;
   transition: opacity 220ms ease 140ms;
+}
+
+/* Fine barre de progression sur l'arête haute de l'indicateur : elle rend
+   le défilement automatique lisible, et son absence rend le gel évident.
+   (WCAG 2.2.2 « Pause, Stop, Hide » : le clic sur un onglet est le
+   mécanisme de mise en pause, encore faut-il que ce soit perceptible.) */
+.hero-tabs__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px 2px 0 0;
+  background: var(--brand);
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+/* Animée seulement quand le défilement tourne réellement. */
+[data-autoplay="running"] .hero-tabs__progress {
+  opacity: 0.9;
+  animation: hero-progress var(--autoplay-ms, 5500ms) linear forwards;
+}
+
+/* Pause au survol / focus : la barre se fige où elle en est. */
+[data-autoplay="running"].is-paused .hero-tabs__progress {
+  animation-play-state: paused;
+}
+
+@keyframes hero-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* État figé : plus de barre, et l'onglet actif signale qu'un nouveau clic
+   relancera le défilement (curseur + infobulle gérés côté HTML/JS). */
+[data-autoplay="frozen"] .hero-tabs__progress {
+  opacity: 0;
+  animation: none;
 }
 
 .hero-tabs__pill.is-travelling .hero-tabs__pill-label {
@@ -352,15 +502,23 @@
 /* --- Accessibilité : mouvement réduit ----------------------- */
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-tabs__bg,
+  .hero-tabs__field,
   .hero-tabs__slide,
   .hero-tabs__pill,
   .hero-tabs__pill-label {
     transition-duration: 1ms !important;
     transition-delay: 0s !important;
   }
-  .hero-tabs__bg {
+  /* Les formes restent, mais immobiles. */
+  .hero-blob {
+    animation: none !important;
+  }
+  .hero-tabs__field {
     transform: none;
+  }
+  .hero-tabs__progress {
+    animation: none !important;
+    opacity: 0 !important;
   }
   .hero-tabs__slide,
   .hero-tabs__slide.is-active,

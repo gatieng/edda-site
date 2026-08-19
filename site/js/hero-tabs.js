@@ -10,7 +10,10 @@
    3. masque le libellé de l'indicateur pendant le trajet ;
    4. calcule pour chaque slide son décalage horizontal (`--shift`) afin
       que le texte se place au-dessus de son onglet ;
-   5. gère le défilement automatique, le clavier et `prefers-reduced-motion`.
+   5. applique la palette de formes animées de la practice active, par
+      alternance de deux champs A/B croisés en fondu ;
+   6. fait défiler automatiquement, et FIGE ce défilement au clic sur un
+      onglet — un nouveau clic sur l'onglet déjà actif le relance.
    ============================================================ */
 
 (function () {
@@ -27,9 +30,11 @@
   var track = root.querySelector('[data-hero-track]');
   var pill = root.querySelector('[data-hero-pill]');
   var pillLabel = root.querySelector('[data-hero-pill-label]');
+  var progress = root.querySelector('[data-hero-progress]');
+  var status = root.querySelector('[data-hero-status]');
   var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
   var slides = Array.prototype.slice.call(root.querySelectorAll('[data-hero-slide]'));
-  var layers = Array.prototype.slice.call(root.querySelectorAll('[data-hero-bg]'));
+  var fields = Array.prototype.slice.call(root.querySelectorAll('[data-hero-field]'));
 
   if (!track || !pill || tabs.length === 0 || tabs.length !== slides.length) return;
 
@@ -38,12 +43,34 @@
     return t.getAttribute('aria-selected') === 'true';
   }));
 
+  var activeField = 0;
   var travelTimer = null;
   var leaveTimer = null;
-  var autoplayTimer = null;
-  var autoplayStopped = false;
-  var paused = false;
-  var visible = true;
+
+  /* --- Formes animées --------------------------------------- */
+
+  // Bascule sur le champ inactif après lui avoir donné la palette de
+  // l'onglet visé, puis le fait apparaître en fondu par-dessus l'autre.
+  function applyPalette(index, immediate) {
+    if (fields.length < 2) return;
+    var target = immediate ? activeField : 1 - activeField;
+    var el = fields[target];
+
+    el.className = el.className.replace(/\bpal-\d+\b/g, '').trim();
+    el.classList.add('pal-' + (index + 1));
+
+    if (immediate) {
+      el.classList.add('is-active');
+      return;
+    }
+
+    // Forcer un recalcul de style pour que la palette soit en place avant
+    // que le fondu ne démarre, sinon on voit l'ancienne couleur monter.
+    void el.offsetWidth;
+    el.classList.add('is-active');
+    fields[activeField].classList.remove('is-active');
+    activeField = target;
+  }
 
   /* --- Mesures ---------------------------------------------- */
 
@@ -72,7 +99,7 @@
 
   /* --- Changement d'onglet ---------------------------------- */
 
-  function goTo(index, fromUser) {
+  function goTo(index) {
     index = (index + tabs.length) % tabs.length;
     if (index === current) return;
 
@@ -112,10 +139,7 @@
       slides[previous].classList.remove('is-leaving');
     }, 700);
 
-    // Fond
-    layers.forEach(function (layer, i) {
-      layer.classList.toggle('is-active', i === index);
-    });
+    applyPalette(index, false);
 
     // Sur mobile la barre défile : on garde l'onglet actif visible.
     if (track.scrollWidth > track.clientWidth) {
@@ -123,33 +147,115 @@
       var target = tab.offsetLeft - (track.clientWidth - tab.offsetWidth) / 2;
       track.scrollTo({ left: Math.max(0, target), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
     }
-
-    if (fromUser) stopAutoplay();
   }
 
-  /* --- Défilement automatique -------------------------------- */
+  /* --- Défilement automatique et gel ------------------------- */
+  /* Trois états possibles :
+       - "running"           : le minuteur tourne, la barre de progression avance
+       - "running" + paused  : suspendu temporairement (survol, focus, onglet
+                               d'arrière-plan, hero hors écran) — reprend seul
+       - "frozen"            : figé par l'utilisateur, ne reprend que sur clic
+     Le minuteur mémorise le temps restant pour rester synchrone avec la
+     barre de progression, elle-même mise en pause par CSS. */
 
-  function tick() {
-    if (paused || !visible || autoplayStopped) return;
-    goTo(current + 1, false);
+  var frozen = false;
+  var timer = null;
+  var startedAt = 0;
+  var remaining = AUTOPLAY_MS;
+
+  var pausedBy = { pointer: false, focus: false, hidden: false, offscreen: false };
+
+  function isPaused() {
+    return pausedBy.pointer || pausedBy.focus || pausedBy.hidden || pausedBy.offscreen;
   }
 
-  function startAutoplay() {
-    if (autoplayStopped || reduceMotion.matches || autoplayTimer) return;
-    autoplayTimer = setInterval(tick, AUTOPLAY_MS);
+  function autoplayPossible() {
+    return !frozen && !reduceMotion.matches && tabs.length > 1;
   }
 
-  function stopAutoplay() {
-    autoplayStopped = true;
-    clearInterval(autoplayTimer);
-    autoplayTimer = null;
+  function restartProgress() {
+    if (!progress) return;
+    progress.style.animation = 'none';
+    void progress.offsetWidth;      // reflow : rejoue l'animation CSS
+    progress.style.animation = '';
+  }
+
+  function clearTimer() {
+    if (timer) clearTimeout(timer);
+    timer = null;
+  }
+
+  function schedule(delay) {
+    clearTimer();
+    if (!autoplayPossible() || isPaused()) return;
+    startedAt = performance.now();
+    remaining = delay;
+    timer = setTimeout(function () {
+      goTo(current + 1);
+      remaining = AUTOPLAY_MS;
+      restartProgress();
+      schedule(AUTOPLAY_MS);
+    }, delay);
+  }
+
+  function syncState() {
+    root.setAttribute('data-autoplay', frozen ? 'frozen' : 'running');
+    root.classList.toggle('is-paused', isPaused());
+  }
+
+  function pause() {
+    if (!timer) { syncState(); return; }
+    // Mémorise le temps restant pour reprendre là où on s'est arrêté.
+    remaining = Math.max(0, remaining - (performance.now() - startedAt));
+    clearTimer();
+    syncState();
+  }
+
+  function resume() {
+    syncState();
+    if (isPaused() || !autoplayPossible()) return;
+    schedule(remaining > 0 ? remaining : AUTOPLAY_MS);
+  }
+
+  function setPaused(key, value) {
+    if (pausedBy[key] === value) return;
+    pausedBy[key] = value;
+    if (value) pause(); else resume();
+  }
+
+  function freeze() {
+    if (frozen) return;
+    frozen = true;
+    clearTimer();
+    syncState();
+    announce('Automatic rotation paused. Select the current tab again to resume.');
+  }
+
+  function unfreeze() {
+    if (!frozen) return;
+    frozen = false;
+    remaining = AUTOPLAY_MS;
+    restartProgress();
+    syncState();
+    schedule(AUTOPLAY_MS);
+    announce('Automatic rotation resumed.');
+  }
+
+  function announce(message) {
+    if (status) status.textContent = message;
   }
 
   /* --- Écouteurs -------------------------------------------- */
 
   tabs.forEach(function (tab, i) {
     tab.addEventListener('click', function () {
-      goTo(i, true);
+      // Cliquer l'onglet déjà actif sert d'interrupteur : gel / reprise.
+      if (i === current) {
+        if (frozen) unfreeze(); else freeze();
+        return;
+      }
+      goTo(i);
+      freeze();
     });
   });
 
@@ -164,25 +270,26 @@
       default: return;
     }
     event.preventDefault();
-    goTo(next, true);
+    goTo(next);
+    freeze();
     tabs[current].focus();
   });
 
-  // Pause au survol et au focus : on ne change pas le contenu sous le
-  // curseur ou sous le clavier de l'utilisateur.
-  root.addEventListener('pointerenter', function () { paused = true; });
-  root.addEventListener('pointerleave', function () { paused = false; });
-  root.addEventListener('focusin', function () { paused = true; });
-  root.addEventListener('focusout', function () { paused = false; });
+  // Pauses temporaires : on ne change pas le contenu sous le curseur ni
+  // sous le clavier de l'utilisateur.
+  root.addEventListener('pointerenter', function () { setPaused('pointer', true); });
+  root.addEventListener('pointerleave', function () { setPaused('pointer', false); });
+  root.addEventListener('focusin', function () { setPaused('focus', true); });
+  root.addEventListener('focusout', function () { setPaused('focus', false); });
 
   document.addEventListener('visibilitychange', function () {
-    visible = !document.hidden;
+    setPaused('hidden', document.hidden);
   });
 
   // Inutile d'animer une hero sortie de l'écran.
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
-      visible = entries[0].isIntersecting && !document.hidden;
+      setPaused('offscreen', !entries[0].isIntersecting);
     }, { threshold: 0.25 }).observe(root);
   }
 
@@ -200,11 +307,15 @@
 
   if (reduceMotion.addEventListener) {
     reduceMotion.addEventListener('change', function () {
-      if (reduceMotion.matches) stopAutoplay();
+      if (reduceMotion.matches) { clearTimer(); syncState(); }
+      else resume();
     });
   }
 
   /* --- Démarrage -------------------------------------------- */
+
+  root.style.setProperty('--autoplay-ms', AUTOPLAY_MS + 'ms');
+  applyPalette(current, true);
 
   // Les polices modifient la largeur des libellés : on remesure après
   // leur chargement, sinon l'indicateur est décalé au premier rendu.
@@ -214,15 +325,7 @@
   }
   window.addEventListener('load', scheduleMeasure);
 
-  startAutoplay();
-
-  // Préchargement discret des autres fonds, une fois la page chargée,
-  // pour que le premier changement d'onglet ne montre pas un trou.
-  window.addEventListener('load', function () {
-    layers.forEach(function (layer, i) {
-      if (i === current) return;
-      var url = layer.getAttribute('data-hero-bg');
-      if (url) new Image().src = url;
-    });
-  });
+  syncState();
+  restartProgress();
+  schedule(AUTOPLAY_MS);
 })();

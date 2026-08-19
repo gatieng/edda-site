@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/hero-tabs.css" />
-  <link rel="preload" as="image" href="img/hero/hero-software.jpg" />
   <style>
 .approach-item--cert{overflow:hidden;isolation:isolate}
 .approach-item--cert>:not(.cert-iso-mark){position:relative;z-index:1}
@@ -186,14 +185,26 @@
     -->
     <section class="hero hero--tabs" data-hero-tabs>
 
-      <!-- Fonds : une couche par practice, croisées en fondu -->
+      <!--
+        Fond : formes abstraites animées, sans aucune image. Deux champs
+        alternés (A/B) portent chacun quatre formes ; à chaque changement
+        d'onglet, le champ inactif reçoit la palette de la practice
+        (classes .pal-1 à .pal-6) puis apparaît en fondu par-dessus.
+      -->
       <div class="hero-tabs__media" aria-hidden="true">
-        <div class="hero-tabs__bg is-active" data-hero-bg="img/hero/hero-software.jpg" style="background-image:url('img/hero/hero-software.jpg')"></div>
-        <div class="hero-tabs__bg" data-hero-bg="img/hero/hero-data.jpg" style="background-image:url('img/hero/hero-data.jpg')"></div>
-        <div class="hero-tabs__bg" data-hero-bg="img/hero/hero-ai.jpg" style="background-image:url('img/hero/hero-ai.jpg')"></div>
-        <div class="hero-tabs__bg" data-hero-bg="img/hero/hero-cloud.jpg" style="background-image:url('img/hero/hero-cloud.jpg')"></div>
-        <div class="hero-tabs__bg" data-hero-bg="img/hero/hero-workplace.jpg" style="background-image:url('img/hero/hero-workplace.jpg')"></div>
-        <div class="hero-tabs__bg" data-hero-bg="img/hero/hero-experience.jpg" style="background-image:url('img/hero/hero-experience.jpg')"></div>
+        <div class="hero-tabs__field pal-1 is-active" data-hero-field>
+          <span class="hero-blob hero-blob--1"></span>
+          <span class="hero-blob hero-blob--2"></span>
+          <span class="hero-blob hero-blob--3"></span>
+          <span class="hero-blob hero-blob--4"></span>
+        </div>
+        <div class="hero-tabs__field" data-hero-field>
+          <span class="hero-blob hero-blob--1"></span>
+          <span class="hero-blob hero-blob--2"></span>
+          <span class="hero-blob hero-blob--3"></span>
+          <span class="hero-blob hero-blob--4"></span>
+        </div>
+        <div class="hero-tabs__grain"></div>
       </div>
       <div class="hero-tabs__scrim" aria-hidden="true"></div>
 
@@ -270,6 +281,7 @@
       <div class="hero-tabs__nav">
           <div class="hero-tabs__track" role="tablist" aria-label="Our practices" data-hero-track>
             <span class="hero-tabs__pill" aria-hidden="true" data-hero-pill>
+              <span class="hero-tabs__progress" data-hero-progress></span>
               <span class="hero-tabs__pill-label" data-hero-pill-label></span>
             </span>
             <button class="hero-tabs__tab" type="button" role="tab" id="hero-tab-1" aria-controls="hero-panel-1" aria-selected="true" tabindex="0">Software Development</button>
@@ -280,6 +292,9 @@
             <button class="hero-tabs__tab" type="button" role="tab" id="hero-tab-6" aria-controls="hero-panel-6" aria-selected="false" tabindex="-1">Experience Design &amp; Accessibility</button>
           </div>
       </div>
+
+      <!-- Annonce l'état du défilement automatique aux lecteurs d'écran. -->
+      <p class="sr-only" aria-live="polite" data-hero-status></p>
     </section>
 
     <section id="services">
