@@ -210,10 +210,10 @@
   content: '';
   display: block;
   width: 48px;
-  height: 8px; /* +55% (3.6px de base) */
+  height: 7px; /* +55% (3.6px de base) */
   margin: 24px 0 0;
   background: #4d3cef;
-  border-radius: 3px;
+  border-radius: 1px;
   opacity: 0;
   transform: translate3d(-85px, 0, 0);
   transition: opacity 260ms ease, transform 1000ms cubic-bezier(0.18, 2.4, 0.64, 1);
