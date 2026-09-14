@@ -1,0 +1,398 @@
+/* ============================================================================
+   What we do — page-specific styles
+   ============================================================================ */
+
+/* ---------- Page hero ---------- */
+.page-hero {
+  background: linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 100%);
+  color: var(--white);
+  padding: 102px 0 96px;
+}
+.page-hero .container { max-width: 980px; }
+.page-hero .kicker { color: rgba(255, 255, 255, 0.7); }
+.page-hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 4vw + 0.5rem, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.page-hero h1 .word-emph { color: rgba(255, 255, 255, 0.55); }
+.page-hero p {
+  margin: 28px 0 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 680px;
+}
+
+/* ---------- Services grid (7 disciplines + summary tile) ---------- */
+.services-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 48px;
+}
+
+.service-card-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px 24px;
+  border-radius: 22px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  min-height: 230px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.service-card-v2:hover,
+.service-card-v2:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(77, 59, 239, 0.25);
+  box-shadow: 0 18px 40px -22px rgba(15, 23, 42, 0.18);
+}
+.service-card-v2:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+/* Linked cards: tiny arrow chip in the corner so users see it's clickable */
+.service-card-v2--linked {
+  position: relative;
+  padding-bottom: 70px;
+}
+.service-card-v2__arrow {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(77, 59, 239, 0.10);
+  color: var(--brand);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.service-card-v2--linked:hover .service-card-v2__arrow,
+.service-card-v2--linked:focus-visible .service-card-v2__arrow {
+  background: var(--brand);
+  color: var(--white);
+  transform: translateX(3px);
+}
+
+/* Dark linked card variant: lighter pill so arrow stays visible on navy */
+.service-card-v2--dark.service-card-v2--linked .service-card-v2__arrow {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+}
+.service-card-v2--dark.service-card-v2--linked:hover .service-card-v2__arrow,
+.service-card-v2--dark.service-card-v2--linked:focus-visible .service-card-v2__arrow {
+  background: var(--brand);
+  color: var(--white);
+}
+
+.service-card-v2__icon {
+  width: 44px;
+  height: 44px;
+  margin-left: -4px;
+  border-radius: 0;
+  background: transparent;
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-card-v2 h3 {
+  margin: 0;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.service-card-v2 p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+/* Highlighted dark tile (used to spotlight one discipline) */
+.service-card-v2--dark {
+  background: #0d1330;
+  border-color: transparent;
+}
+.service-card-v2--dark h3 { color: var(--white); }
+.service-card-v2--dark p  { color: rgba(255, 255, 255, 0.72); }
+.service-card-v2--dark .service-card-v2__icon {
+  background: transparent;
+  color: var(--white);
+}
+
+/* Closing summary tile */
+.service-card-v2--summary {
+  background: rgba(77, 59, 239, 0.08);
+  border-color: rgba(77, 59, 239, 0.18);
+}
+.service-card-v2--summary .service-card-v2__icon {
+  background: transparent;
+  color: var(--brand);
+}
+.service-card-v2--summary h3 { color: var(--text); }
+
+/* ---------- Delivery models ---------- */
+.delivery-section {
+  background: var(--mist);
+}
+
+.delivery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 48px;
+}
+
+.delivery-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 36px 32px;
+  border-radius: 26px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.delivery-card__badge {
+  align-self: flex-start;
+  background: rgba(77, 59, 239, 0.10);
+  color: var(--brand);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.delivery-card h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.delivery-card > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.delivery-card__list {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.delivery-card__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+.delivery-card__list li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 14px;
+  height: 2px;
+  background: var(--brand);
+  margin-top: 0.6em;
+  border-radius: 2px;
+}
+
+/* Accent (EDDA Factory) variant */
+.delivery-card--accent {
+  background: linear-gradient(160deg, #2a1ec9 0%, #3d2ddb 100%);
+  border-color: transparent;
+  color: var(--white);
+}
+.delivery-card--accent .delivery-card__badge {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+}
+.delivery-card--accent h3 { color: var(--white); }
+.delivery-card--accent > p { color: rgba(255, 255, 255, 0.86); }
+.delivery-card--accent .delivery-card__list {
+  border-top-color: rgba(255, 255, 255, 0.18);
+}
+.delivery-card--accent .delivery-card__list li { color: var(--white); }
+.delivery-card--accent .delivery-card__list li::before { background: var(--white); }
+
+/* ---------- Crafts (jobs marquee) section ---------- */
+.crafts-section {
+  background: var(--dark);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  padding-top: 96px;
+  padding-bottom: 108px;
+}
+.crafts-section::before,
+.crafts-section::after {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.crafts-section::before {
+  background: rgba(77, 59, 239, 0.6);
+  top: -160px;
+  left: -180px;
+}
+.crafts-section::after {
+  background: rgba(200, 80, 220, 0.35);
+  bottom: -200px;
+  right: -160px;
+}
+.crafts-section > .container { position: relative; z-index: 1; }
+
+.crafts-section .kicker { color: rgba(255, 255, 255, 0.7); }
+.crafts-section h2 { color: var(--white); }
+.crafts-section .lead { color: rgba(255, 255, 255, 0.78); }
+
+.crafts-marquee {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  /* Soft fade on edges so chips drift in/out cleanly */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.crafts-marquee.is-paused .crafts-row {
+  animation-play-state: paused;
+}
+
+/* Pause/Play control aligned right above the marquee */
+.crafts-controls {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+}
+.crafts-pause {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px 9px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+.crafts-pause:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+.crafts-pause:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+.crafts-pause__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+.crafts-pause__icon--play { display: none; }
+.crafts-pause[aria-pressed="true"] .crafts-pause__icon--pause { display: none; }
+.crafts-pause[aria-pressed="true"] .crafts-pause__icon--play  { display: inline-flex; }
+
+.crafts-row {
+  display: flex;
+  width: max-content;
+  gap: 12px;
+  animation: crafts-scroll 60s linear infinite;
+}
+.crafts-row--reverse { animation-direction: reverse; animation-duration: 75s; }
+.crafts-row--slow    { animation-duration: 90s; }
+
+.craft-chip {
+  flex-shrink: 0;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.craft-chip--accent {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+.craft-chip:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes crafts-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crafts-row { animation: none; }
+  .crafts-marquee { flex-wrap: wrap; }
+}
+
+.crafts-cta {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  text-align: center;
+}
+.crafts-cta__text {
+  margin: 0;
+  font-size: clamp(1.2rem, 1.5vw + 0.6rem, 1.7rem);
+  font-weight: 600;
+  color: var(--white);
+  max-width: 640px;
+  line-height: 1.3;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .services-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .delivery-grid  { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .services-cards { grid-template-columns: 1fr; }
+  .page-hero { padding: 92px 0 72px; }
+  .crafts-section { padding-top: 72px; padding-bottom: 84px; }
+}

@@ -1,0 +1,411 @@
+/* ============================================================
+   Hero à onglets glissants
+   Proposition inspirée du comportement observé sur le concept
+   « Weaverly » (dribbble.com/shots/24536939).
+
+   Principes repris :
+   - barre d'onglets translucide collée au bord bas de la hero ;
+   - indicateur blanc opaque qui glisse d'un onglet à l'autre, son
+     libellé disparaissant pendant le trajet puis réapparaissant ;
+   - titre + description qui se croisent en fondu, avec flou et
+     translation verticale (le sortant monte, l'entrant vient du bas) ;
+   - le bloc de texte s'aligne horizontalement sur l'onglet actif ;
+   - l'image de fond se croise plus lentement que le texte.
+   ============================================================ */
+
+.hero--tabs {
+  display: flex;
+  flex-direction: column;
+  min-height: min(780px, 94vh);
+  background: var(--dark);
+  /* Contrairement à `.hero`, on ne rogne pas : l'ombre portée de
+     l'indicateur doit pouvoir déborder sur la section blanche du dessous,
+     c'est ce qui lui donne son aspect d'onglet accroché au bord. Les
+     formes du fond, elles, sont rognées par `.hero-tabs__media`. */
+  overflow: visible;
+  /* styles.css l.1172 applique `section { padding: 108px 0 }`. Le
+     padding-bottom laissait 108 px de hero sous la barre d'onglets : on
+     l'annule pour que la barre soit au ras du bord bas. */
+  padding-bottom: 0;
+}
+
+/* --- Fond : vidéos de dégradé en boucle ---------------------- */
+
+/* Essai : les formes CSS animées de la maquette d'origine sont remplacées
+   par deux vidéos de dégradé (fournies par l'utilisateur), lues en boucle
+   en continu. Deux champs alternés (A/B) portent chacun une vidéo fixe ;
+   à chaque changement d'onglet, seule l'opacité du champ inactif/actif
+   bascule — la vidéo ne redémarre ni ne recharge jamais. */
+
+.hero-tabs__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.hero-tabs__field {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  /* Le fond traîne volontairement derrière le texte. */
+  transition: opacity 900ms ease 40ms;
+  will-change: opacity;
+}
+
+.hero-tabs__field.is-active {
+  opacity: 1;
+}
+
+.hero-tabs__bgvideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Grain : la référence en a un très visible. Il casse aussi le banding
+   des grands dégradés, sans aucune requête réseau. */
+.hero-tabs__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* Voile : plus léger qu'avec une photo, puisque le fond est maîtrisé.
+   Il assombrit surtout la gauche (où vit le texte) et le bas (barre). */
+.hero-tabs__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(15, 18, 40, 0.72) 0%, rgba(15, 18, 40, 0.34) 48%, rgba(15, 18, 40, 0.1) 100%),
+    linear-gradient(180deg, rgba(15, 18, 40, 0.45) 0%, rgba(15, 18, 40, 0.12) 34%, rgba(15, 18, 40, 0.55) 100%);
+}
+
+/* --- Contenu ------------------------------------------------ */
+
+/* La maquette n'enferme pas le contenu dans le conteneur de 1120 px : il
+   occupe toute la largeur du cadre, avec une marge de 44 px. Les libellés
+   d'onglets s'alignent dessus (28 px de piste + 16 px de bouton). */
+.hero-tabs__inner {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 44px 44px 32px;
+}
+
+.hero--tabs .hero-tabs__lede {
+  margin: 0;
+  max-width: 30ch;
+  font-size: 1rem; /* 16px */
+  font-weight: 300;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: normal;
+}
+
+/* --- Pile de slides ----------------------------------------- */
+
+.hero-tabs__slides {
+  position: relative;
+  flex: 1;
+  /* Assez d'écart avec le lede pour que le titre respire dans le
+     premier tiers de la hero, sans coller sous la tagline. */
+  margin-top: 170px;
+  /* Hauteur réservée pour éviter tout saut de mise en page pendant
+     le croisement, puisque les slides sont superposées. */
+  min-height: 320px;
+}
+
+.hero-tabs__slide {
+  --shift: 0;
+  --slide-w: min(620px, 100%);
+
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(0, 70px, 0);
+  filter: blur(14px);
+  transition:
+    opacity 780ms ease,
+    transform 900ms cubic-bezier(0.22, 1, 0.28, 1),
+    filter 780ms ease,
+    visibility 0s linear 900ms;
+  will-change: opacity, transform, filter;
+}
+
+.hero-tabs__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+  transition:
+    opacity 820ms ease 50ms,
+    transform 920ms cubic-bezier(0.22, 1, 0.28, 1) 50ms,
+    filter 820ms ease 50ms,
+    visibility 0s linear 0s;
+}
+
+/* Le slide sortant monte et se floute au lieu de simplement disparaître. */
+/* `visibility` n'est pas redéfinie ici : la règle de base la passe à
+   `hidden` avec 900 ms de retard, ce qui laisse le slide sortant visible
+   le temps de son animation puis le retire de l'ordre de tabulation. */
+.hero-tabs__slide.is-leaving {
+  opacity: 0;
+  transform: translate3d(0, -110px, 0);
+  filter: blur(16px);
+  transition:
+    opacity 720ms ease,
+    transform 880ms cubic-bezier(0.4, 0, 0.6, 1),
+    filter 720ms ease;
+}
+
+/* Le bloc de texte se décale horizontalement pour se placer au-dessus
+   de l'onglet actif : `--shift` (0 → 1) est calculé en JS depuis la
+   position réelle du bouton. */
+.hero-tabs__slide-inner {
+  width: var(--slide-w);
+  margin-left: calc(var(--shift) * (100% - var(--slide-w)));
+}
+
+.hero-tabs__slide[data-align="end"] .hero-tabs__slide-inner {
+  text-align: right;
+}
+
+.hero--tabs .hero-tabs__title {
+  margin: 0;
+  font-size: clamp(2.5rem /* 40px */, 4.6vw, 4.25rem /* 68px */);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+/* Petit trait de couleur entre le titre et la description. Glissement
+   horizontal avec rebond élastique accentué, indépendant de l'animation du
+   bloc de texte qui le porte (effet « D » retenu après comparaison). */
+.hero--tabs .hero-tabs__title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 5.6px; /* +55% (3.6px de base) */
+  margin: 24px 0 0;
+  background: #4d3cef;
+  border-radius: 2px;
+  opacity: 0;
+  transform: translate3d(-55px, 0, 0);
+  transition: opacity 260ms ease, transform 800ms cubic-bezier(0.32, 1.75, 0.64, 1);
+}
+.hero-tabs__slide.is-active .hero-tabs__title::after {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 490ms; /* +100ms (0.1s plus tard) */
+}
+.hero-tabs__slide.is-leaving .hero-tabs__title::after {
+  transform: translate3d(55px, 0, 0);
+  transition: opacity 180ms ease, transform 280ms ease;
+}
+
+.hero--tabs .hero-tabs__desc {
+  margin: 22px 0 0;
+  max-width: 46ch;
+  font-size: 1rem; /* 16px */
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hero-tabs__slide[data-align="end"] .hero-tabs__title::after,
+.hero-tabs__slide[data-align="end"] .hero-tabs__desc {
+  margin-left: auto;
+}
+
+/* --- Barre d'onglets ---------------------------------------- */
+
+.hero-tabs__nav {
+  position: relative;
+  z-index: 3;
+  margin-top: auto;
+  background: rgba(9, 13, 32, 0.3);
+  backdrop-filter: blur(16px) saturate(1.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* Pleine largeur, comme sur la référence : six libellés ne tiennent pas
+   dans les 1120 px du `.container`. Les gouttières restent alignées sur
+   celles du site (20 px). */
+.hero-tabs__track {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  padding-inline: 28px;
+  /* Sur petit écran la barre défile horizontalement plutôt que de
+     comprimer six libellés jusqu'à l'illisible. */
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.hero-tabs__track::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-tabs__tab {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  appearance: none;
+  border: 0;
+  background: none;
+  margin: 0;
+  padding: 17px 16px;
+  font: inherit;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.2;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+.hero-tabs__tab:hover {
+  color: var(--white);
+}
+
+.hero-tabs__tab:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: -4px;
+  border-radius: 8px;
+}
+
+/* L'indicateur passe AU-DESSUS des libellés : opaque, il masque le
+   texte qu'il survole pendant son trajet — exactement le rendu de la
+   référence. Son propre libellé (dupliqué) n'apparaît qu'à l'arrivée. */
+.hero-tabs__pill {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 16px;
+  border-radius: 12px 12px 0 0;
+  background: var(--white);
+  box-shadow: 0 14px 28px rgba(9, 13, 32, 0.22);
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 200ms cubic-bezier(0.33, 0, 0.2, 1),
+    width 200ms cubic-bezier(0.33, 0, 0.2, 1);
+  will-change: transform, width;
+}
+
+/* Avant la première mesure, on n'affiche rien pour éviter un flash
+   de l'indicateur à 0px dans le coin gauche. */
+.hero-tabs__pill:not(.is-ready) {
+  opacity: 0;
+}
+
+.hero-tabs__pill-label {
+  font-size: 0.875rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: #3b4256;
+  opacity: 1;
+  transition: opacity 150ms ease 70ms;
+}
+
+.hero-tabs__pill.is-travelling .hero-tabs__pill-label {
+  opacity: 0;
+  transition: opacity 80ms ease;
+}
+
+/* --- Responsive --------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .hero-tabs__track {
+    justify-content: flex-start;
+  }
+  .hero-tabs__tab {
+    padding-inline: 16px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero--tabs {
+    min-height: 0;
+  }
+  .hero-tabs__inner {
+    padding: 32px 20px 28px;
+  }
+  .hero-tabs__track {
+    padding-inline: 8px;
+  }
+  .hero-tabs__slides {
+    margin-top: 28px;
+    min-height: 300px;
+  }
+  /* Le décalage horizontal n'a plus de sens quand la barre défile :
+     tout revient à gauche. */
+  .hero-tabs__slide-inner {
+    width: 100%;
+    margin-left: 0;
+  }
+  .hero-tabs__slide[data-align="end"] .hero-tabs__slide-inner,
+  .hero-tabs__slide[data-align="end"] .hero-tabs__desc {
+    text-align: left;
+    margin-left: 0;
+  }
+  .hero--tabs .hero-tabs__lede {
+    font-size: 0.9rem;
+  }
+}
+
+/* --- Accessibilité : mouvement réduit ----------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-tabs__field,
+  .hero-tabs__slide,
+  .hero-tabs__pill,
+  .hero-tabs__pill-label {
+    transition-duration: 1ms !important;
+    transition-delay: 0s !important;
+  }
+  /* Les formes restent, mais immobiles. */
+  .hero-blob {
+    animation: none !important;
+  }
+  .hero-tabs__field {
+    transform: none;
+  }
+  .hero-tabs__slide,
+  .hero-tabs__slide.is-active,
+  .hero-tabs__slide.is-leaving {
+    transform: none;
+    filter: none;
+  }
+}

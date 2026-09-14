@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EDDA — Who we are. A Luxembourg-based digital transformation partner inspired by the 13th-century Edda, carrying forward a tradition of imparting and sharing acquired knowledge." />
+  <title>EDDA | Who we are</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/header-flat.css" />
+  <link rel="stylesheet" href="css/subpage.css" />
+  <link rel="stylesheet" href="css/who-we-are.css" />
+</head>
+<body>
+  <!-- Skip links -->
+  <ul class="skip-links" aria-label="Skip links">
+    <li><a href="#main">Skip to main content</a></li>
+    <li><a href="#primary-nav">Skip to navigation</a></li>
+    <li><a href="#footer">Skip to footer</a></li>
+  </ul>
+
+  <!-- Header (shared) -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="header-pill">
+        <a href="index.html" class="header-brand" aria-label="EDDA — Home">
+          <img src="img/logo-edda.svg" alt="" />
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-haspopup="dialog">
+          <span class="nav-toggle__icon" aria-hidden="true">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </span>
+          <span class="nav-toggle__text">Menu</span>
+        </button>
+        <div id="primary-nav" class="header-nav">
+          <div class="header-nav__top">
+            <span class="header-nav__title" id="nav-title">Menu</span>
+            <button class="nav-close" type="button" aria-label="Close menu">
+              <span class="nav-close__label">Close</span>
+              <span class="nav-close__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" focusable="false"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </button>
+          </div>
+          <nav role="navigation" aria-label="Primary">
+            <ul role="list">
+              <li><a href="index.html">Home page</a></li>
+              <li class="has-submenu">
+                <button type="button" class="header-nav__submenu-toggle" aria-expanded="false" aria-controls="submenu-services" aria-haspopup="true">
+                  What we do
+                  <svg class="header-nav__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2.5v6.4M3.4 6.4L6 9.1l2.6-2.7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div id="submenu-services" class="header-nav__submenu header-nav__mega" role="group" aria-label="What we do">
+                  <div class="header-mega__col">
+                    <div class="header-mega__col-head">
+                      <p class="header-mega__label">Services</p>
+                    </div>
+                    <ul class="header-mega__list" role="list">
+                    <li><a href="Software_Development.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Software Development</span></a></li>
+                    <li><a href="Data_Intelligence.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20V13M10 20V8M16 20V11M22 20V4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M3 5l5 4 6-4 7 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/></svg></span><span>Data Intelligence</span></a></li>
+                    <li><a href="AI_Engineering.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2l2.2 5.8L21 10l-5.8 2.2L13 18l-2.2-5.8L5 10l5.8-2.2L13 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><span>AI Engineering</span></a></li>
+                    <li><a href="Cloud_Infrastructure.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7.5 18h10a4.5 4.5 0 0 0 .8-8.94A6.5 6.5 0 0 0 5.5 11.5 4 4 0 0 0 7.5 18z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span><span>Cloud &amp; Infrastructure</span></a></li>
+                    <li><a href="Cybersecurity_IMAS.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v5.5c0 4.5-3.4 8.5-8 9.5-4.6-1-8-5-8-9.5V6l8-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><rect x="9" y="10.5" width="6" height="5" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>Cybersecurity · IMAS</span></a></li>
+                    <li><a href="Digital_Workplace_ECM.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>Digital Workplace &amp; ECM</span></a></li>
+                    <li><a href="Experience_Design.html"><span class="header-mega__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20l5-2 9-9-3-3-9 9-2 5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 6l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="19" cy="19" r="2" stroke="currentColor" stroke-width="1.6"/></svg></span><span>Experience Design &amp; Accessibility</span></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li><a href="Who_We_Are.html" aria-current="page">Who we are</a></li>
+                            <li><a href="Delivery_Model.html">Quality &amp; delivery</a></li>
+              <li><a href="News.html">News</a></li>
+              <li><a href="Jobs.html">Jobs<span class="nav-badge" aria-label="10 open positions">10</span></a></li>
+            </ul>
+          </nav>
+        </div>
+        <a class="header-cta" href="Contact.html">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <script src="js/header-nav.js" defer></script>
+  <script src="js/header-scroll.js" defer></script>
+  <script src="js/who-we-are.js" defer></script>
+
+  <main role="main" id="main" tabindex="-1">
+    <!-- ====================================================================
+         Hero — "Inspiring Excellence" + warm team-photo collage.
+         The photo strip parallax-scrolls horizontally (see js/who-we-are.js).
+         ==================================================================== -->
+    <section class="wwa-hero">
+      <div class="container">
+        <nav role="navigation" class="breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="breadcrumb__sep" aria-hidden="true">›</li>
+            <li><span aria-current="page">Who we are</span></li>
+          </ol>
+        </nav>
+
+        <div class="wwa-hero__inner">
+          <h1 class="wwa-hero__title">
+            <span class="wwa-hero__line">Inspiring</span>
+            <span class="wwa-hero__line wwa-hero__line--accent">Excellence.</span>
+          </h1>
+          <p class="wwa-hero__tagline">A Luxembourg and Brussels based digital transformation partner with deep institutional knowledge, built around people who genuinely enjoy working together.</p>
+        </div>
+      </div>
+
+      <!-- Team photo strip — full-bleed, parallax-driven on horizontal axis. -->
+      <div class="team-strip" aria-label="EDDA team in everyday moments">
+        <div class="team-strip__track" data-parallax-track>
+          <figure class="team-strip__item team-strip__item--tall">
+            <img src="img/team/team-01.jpg" alt="Two EDDA colleagues smiling next to an EDDA banner during a summer event." loading="lazy" />
+          </figure>
+          <figure class="team-strip__item team-strip__item--wide">
+            <img src="img/team/team-02.jpg" alt="Colleague in a relaxed conversation next to the EDDA Inspiring Excellence banner." loading="lazy" />
+          </figure>
+          <figure class="team-strip__item">
+            <img src="img/team/team-03.jpg" alt="EDDA colleague in a red polo, laughing during a team gathering." loading="lazy" />
+          </figure>
+          <figure class="team-strip__item team-strip__item--tall">
+            <img src="img/team/team-04.jpg" alt="Colleague waiting for an order at the EDDA summer food truck." loading="lazy" />
+          </figure>
+          <figure class="team-strip__item team-strip__item--wide">
+            <img src="img/team/team-05.jpg" alt="Two colleagues laughing while sharing fries and wraps outdoors." loading="lazy" />
+          </figure>
+          <figure class="team-strip__item">
+            <img src="img/team/team-06.jpg" alt="Colleague in a candid conversation, drink in hand, at a company event." loading="lazy" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         About — "About edda"
+         ==================================================================== -->
+    <section class="wwa-about">
+      <div class="container">
+        <div class="wwa-about__grid">
+          <div>
+            <h2>An epic journey.</h2>
+          </div>
+          <div class="wwa-about__copy">
+            <p>The original <em>Edda</em> is a unique 13th-century collection of poetry and epic prose that forms the basis for the ancient Norse tradition of imparting and sharing wisdom and acquired knowledge.</p>
+            <p>At the time, wisdom was relayed using quills — whereas in our contemporary world, it is conveyed through code. Our aim is to carry forward the Edda spirit and to inspire excellence in our business relationships.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Philosophy — 4 cards
+         ==================================================================== -->
+    <section class="wwa-philosophy">
+      <div class="container">
+        <div class="section-head">
+          <h2>Convictions we work by.</h2>
+        </div>
+
+        <ul class="philo-grid" role="list">
+          <li class="philo-card">
+            <span class="philo-card__num" aria-hidden="true">01</span>
+            <h3>Expertise</h3>
+            <p>We breed expertise by engaging people with exceptional talents in order to be able to offer the highest quality of service to clients.</p>
+          </li>
+          <li class="philo-card">
+            <span class="philo-card__num" aria-hidden="true">02</span>
+            <h3>Know-how</h3>
+            <p>We prioritise the interpersonal skills needed to deliver quality of service with both respect and commitment.</p>
+          </li>
+          <li class="philo-card">
+            <span class="philo-card__num" aria-hidden="true">03</span>
+            <h3>Results, methodology &amp; framing</h3>
+            <p>We adopt a structured approach to each project from conception to delivery, in which our management plays an active role to ensure the highest standards of excellence and successful results.</p>
+          </li>
+          <li class="philo-card">
+            <span class="philo-card__num" aria-hidden="true">04</span>
+            <h3>Collaboration</h3>
+            <p>Close collaboration with our consultants, and within our consultant teams, is key to developing our expertise, our business and our relationships.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Our story — vertical timeline
+         ==================================================================== -->
+    <section class="wwa-story">
+      <div class="container">
+        <div class="section-head">
+          <h2>Fifteen years in the making.</h2>
+        </div>
+
+        <ol class="timeline" role="list">
+          <li class="timeline__item timeline__item--milestone" data-timeline-item>
+            <span class="timeline__year">2021</span>
+            <div class="timeline__body">
+              <h3>EDDA Luxembourg is born.</h3>
+              <p>One brand, one team, one ambition — to keep imparting and sharing the wisdom of building good software, for good clients.</p>
+            </div>
+          </li>
+          <li class="timeline__item" data-timeline-item>
+            <span class="timeline__year">2021</span>
+            <div class="timeline__body">
+              <h3>Acquisition of Oktopus Consulting.</h3>
+              <p>We welcome the team of <strong>Oktopus Consulting</strong>, experts in Data Intelligence since 2004 — extending our reach across the data value chain.</p>
+            </div>
+          </li>
+          <li class="timeline__item" data-timeline-item>
+            <span class="timeline__year">2020</span>
+            <div class="timeline__body">
+              <h3>100 % independent.</h3>
+              <p>C-Services becomes fully independent through a management buy-out.</p>
+            </div>
+          </li>
+          <li class="timeline__item" data-timeline-item>
+            <span class="timeline__year">2017</span>
+            <div class="timeline__body">
+              <h3>Launch of the Software Factory.</h3>
+              <p>A service-centre approach giving our clients the possibility to delegate to us part or all of their IT developments.</p>
+            </div>
+          </li>
+          <li class="timeline__item" data-timeline-item>
+            <span class="timeline__year">2012</span>
+            <div class="timeline__body">
+              <h3>Introduction of the Fixed-Price service.</h3>
+              <p>C-Services begins committing to outcomes — a turning point in how we partner with clients on delivery.</p>
+            </div>
+          </li>
+          <li class="timeline__item" data-timeline-item>
+            <span class="timeline__year">2008</span>
+            <div class="timeline__body">
+              <h3>C-Services is created.</h3>
+              <p>The first chapter of what would become EDDA: a small Luxembourg consulting outfit with a focus on enterprise software engineering.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Strategic partners — alliances behind every delivery
+         ==================================================================== -->
+    <section class="wwa-partners">
+      <div class="container">
+        <div class="section-head">
+          <h2>Strong alliances behind every delivery.</h2>
+          <p class="lead">We co-build with research institutes, advisory firms and specialist studios to widen the expertise we bring to every engagement.</p>
+        </div>
+        <ul class="partners-grid wwa-partners__grid" role="list" aria-label="Strategic partners">
+          <li class="partner-tile"><span>KPMG</span></li>
+          <li class="partner-tile"><span>Deep</span></li>
+          <li class="partner-tile"><span>LIST</span></li>
+          <li class="partner-tile"><span>IMAS</span></li>
+          <li class="partner-tile"><span>Phrenos</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         Join us banner
+         ==================================================================== -->
+    <section class="wwa-join">
+      <div class="container">
+        <div class="wwa-join__box">
+          <div>
+            <p class="kicker kicker--on-dark">Careers</p>
+            <h2>Want to join us?</h2>
+            <p>We're continuously looking for experienced professionals across all our practices — software, data, AI, cloud, cybersecurity and experience design.</p>
+          </div>
+          <div>
+            <a class="btn btn-primary btn--on-dark" href="index.html#jobs">Check out our open positions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (shared) -->
+  <footer role="contentinfo" id="footer" class="site-footer" tabindex="-1" style="border-color: rgb(35, 49, 67)">
+    <div class="container footer-group footer-group--top">
+      <p class="footer-title footer-group__head">Groupe <span class="footer-group__edda">EDDA</span></p>
+      <ul class="footer-group__list" role="list">
+        <li><a href="Contact.html">EDDA Luxembourg <span>Software, consulting &amp; UX</span></a></li>
+        <li><a href="Contact.html">EDDA Belgium <span>Our foothold in Brussels</span></a></li>
+        <li><a href="https://www.imas.eu/" target="_blank" rel="noopener">IMAS <span>Cyber security made simple</span></a></li>
+        <li><a href="https://www.phrenos.eu/" target="_blank" rel="noopener">Phrenos <span>European-scale events</span></a></li>
+      </ul>
+    </div>
+    <div class="container footer-grid">
+      <div>
+        <img class="footer-logo" src="img/logo-edda-footer.png" alt="EDDA" />
+        <p class="footer-copy">Your trusted partner for digital transformation.</p>
+        <ul class="footer-certs" role="list">
+          <li><img src="img/iso-9001.png" alt="ISO 9001 certified" /><span>ISO 9001</span></li>
+          <li><img src="img/iso-14001.png" alt="ISO 14001 certified" /><span>ISO 14001</span></li>
+        </ul>
+      </div>
+      <nav role="navigation" aria-label="Footer">
+        <p class="footer-title" id="footer-nav-title">Navigation</p>
+        <ul class="footer-links" role="list" aria-labelledby="footer-nav-title">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="What_We_Do.html">What we do</a></li>
+          <li><a href="Use_Cases.html">Use cases</a></li>
+          <li><a href="Who_We_Are.html">Who we are</a></li>
+          <li><a href="Jobs.html">Jobs</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-title" id="footer-offices-title">Offices</p>
+        <ul class="footer-links" role="list" aria-labelledby="footer-offices-title">
+          <li>
+            <address>
+              <strong>Windhof (Luxembourg)</strong><br />
+              3 rue de l'industrie<br />
+              L‑8399 Windhof<br />
+              <a href="tel:+35228860700">+352 28 86 07</a>
+            </address>
+          </li>
+          <li>
+            <address>
+              <strong>Brussels</strong><br />
+              Chaussée de la Hulpe, 185<br />
+              <a href="tel:+35228860700">+352 28 86 07</a>
+            </address>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-title" id="footer-contact-title">Contact</p>
+        <div class="footer-contact" aria-labelledby="footer-contact-title">
+          <a href="mailto:info@edda.lu"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M4 7.5l8 5.5 8-5.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>info@edda.lu</span></a>
+          <a href="https://wa.me/35228860700" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.9 8.4c.3-.6.9-.5 1.2 0l.6 1.1c.2.4 0 .7-.3 1-.3.3-.3.5-.1.8.5.9 1.1 1.4 2 1.9.3.2.6.1.8-.2.3-.3.6-.5 1-.3l1.1.6c.5.3.6.8 0 1.2-1 .7-2.1.7-3.3.1a8.4 8.4 0 0 1-3.7-3.7c-.6-1.2-.6-2.2.1-3.2z" fill="currentColor"/></svg><span>WhatsApp</span></a>
+        </div>
+        <ul class="footer-social" role="list">
+          <li><a href="https://www.linkedin.com/company/eddalux" target="_blank" rel="noopener" aria-label="EDDA on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.55h.05c.53-.95 1.83-1.85 3.65-1.85 2.9 0 3.9 1.85 3.9 4.75V21h-4v-5.9c0-1.4-.5-2.35-1.75-2.35-1.05 0-1.65.7-1.9 1.4-.1.25-.13.6-.13.95V21h-3.6z"/></svg></a></li>
+          <li><a href="https://www.facebook.com/eddaluxembourg" target="_blank" rel="noopener" aria-label="EDDA on Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.8c0-.85.25-1.4 1.5-1.4h1.6V4.7c-.3-.05-1.3-.15-2.5-.15-2.5 0-4.1 1.5-4.1 4.3v1.65H7.5v3h2.5V21z"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-legal">
+      <nav role="navigation" aria-label="Legal">
+        <ul role="list" class="footer-links footer-links--inline">
+          <li><a href="#">Cookie Settings</a></li>
+          <li><a href="#">Privacy Statement</a></li>
+          <li><a href="#">Terms and Conditions</a></li>
+          <li><a href="#">Legal</a></li>
+          <li><a href="Accessibility_Statement.html">Accessibility Statement</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

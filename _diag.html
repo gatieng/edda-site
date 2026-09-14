@@ -1,0 +1,43 @@
+<!doctype html>
+<!-- Fichier de diagnostic temporaire : mesure la géométrie réelle de la hero. -->
+<html><head><meta charset="utf-8"><title>diag</title></head>
+<body style="margin:0">
+<iframe id="f" src="index.html" style="width:1400px;height:900px;border:0"></iframe>
+<pre id="out" style="font:12px monospace">en attente…</pre>
+<script>
+var f = document.getElementById('f');
+f.addEventListener('load', function () {
+  var w = f.contentWindow, d = f.contentDocument;
+  var rows = [];
+  function push(label, el) {
+    if (!el) { rows.push(label + ' : ABSENT'); return; }
+    var r = el.getBoundingClientRect(), cs = w.getComputedStyle(el);
+    rows.push(
+      label.padEnd(34) +
+      ' top=' + r.top.toFixed(1).padStart(7) +
+      ' bot=' + r.bottom.toFixed(1).padStart(7) +
+      ' h=' + r.height.toFixed(1).padStart(7) +
+      ' | pos=' + cs.position.padEnd(8) +
+      ' flexGrow=' + cs.flexGrow +
+      ' mt=' + cs.marginTop +
+      ' minH=' + cs.minHeight
+    );
+  }
+  var sec = d.querySelector('.hero--tabs');
+  push('SECTION .hero--tabs', sec);
+  Array.prototype.forEach.call(sec.children, function (c, i) {
+    push('  enfant[' + i + '] ' + (c.className || c.tagName), c);
+  });
+  push('  .hero-tabs__slides', d.querySelector('.hero-tabs__slides'));
+  push('  .hero-tabs__track', d.querySelector('.hero-tabs__track'));
+  push('HEADER .site-header', d.querySelector('.site-header'));
+  push('MAIN', d.querySelector('main'));
+  push('#services', d.querySelector('#services'));
+  var cs = w.getComputedStyle(sec);
+  rows.push('\nsection: display=' + cs.display + ' flexDirection=' + cs.flexDirection +
+            ' paddingTop=' + cs.paddingTop + ' paddingBottom=' + cs.paddingBottom +
+            ' overflow=' + cs.overflow);
+  document.getElementById('out').textContent = rows.join('\n');
+});
+</script>
+</body></html>
