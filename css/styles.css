@@ -1176,6 +1176,11 @@ section { padding: 108px 0; }
   margin-bottom: 38px;
 }
 
+.section-head h2 {
+  font-weight: 300;
+  color: inherit;
+}
+
 .section-head__actions {
   margin-top: 24px;
   display: flex;
@@ -2526,12 +2531,4 @@ h2 {
 .footer-certs li{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.7);font-size:0.82rem;letter-spacing:.02em}
 .footer-certs img{width:42px;height:42px;object-fit:contain;background:#fff;border-radius:50%;padding:4px}
 
-/* --- Word emphasis styles ---------------------------------------- */
-.word-light {
-  font-weight: 300;
-  color: inherit;
-}
 
-.word-highlight {
-  color: #ffd148;
-}
