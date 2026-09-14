@@ -210,13 +210,13 @@
   content: '';
   display: block;
   width: 48px;
-  height: 6px; /* +55% (3.6px de base) */
+  height: 8px; /* +55% (3.6px de base) */
   margin: 24px 0 0;
   background: #4d3cef;
-  border-radius: 1px;
+  border-radius: 3px;
   opacity: 0;
-  transform: translate3d(-65px, 0, 0);
-  transition: opacity 260ms ease, transform 900ms cubic-bezier(0.34, 1.2, 0.64, 1);
+  transform: translate3d(-85px, 0, 0);
+  transition: opacity 260ms ease, transform 1000ms cubic-bezier(0.18, 2.4, 0.64, 1);
 }
 .hero-tabs__slide.is-active .hero-tabs__title::after {
   opacity: 1;
@@ -224,7 +224,7 @@
   transition-delay: 490ms; /* +100ms (0.1s plus tard) */
 }
 .hero-tabs__slide.is-leaving .hero-tabs__title::after {
-  transform: translate3d(65px, 0, 0);
+  transform: translate3d(85px, 0, 0);
   transition: opacity 180ms ease, transform 280ms ease;
 }
 
